@@ -53,8 +53,8 @@ namespace WarehouseRemittance.App.Forms
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 356);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -68,7 +68,7 @@ namespace WarehouseRemittance.App.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(385, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 14);
+            this.label1.Size = new System.Drawing.Size(35, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "نام :";
             // 
@@ -77,7 +77,7 @@ namespace WarehouseRemittance.App.Forms
             this.txtName.Location = new System.Drawing.Point(12, 37);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(367, 22);
+            this.txtName.Size = new System.Drawing.Size(367, 26);
             this.txtName.TabIndex = 0;
             // 
             // btnCancel
@@ -119,7 +119,7 @@ namespace WarehouseRemittance.App.Forms
             this.GroupName});
             this.grdList.ContextMenuStrip = this.cmGroups;
             this.grdList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdList.Location = new System.Drawing.Point(0, 91);
+            this.grdList.Location = new System.Drawing.Point(0, 0);
             this.grdList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grdList.MultiSelect = false;
             this.grdList.Name = "grdList";
@@ -128,7 +128,7 @@ namespace WarehouseRemittance.App.Forms
             this.grdList.RowHeadersWidth = 51;
             this.grdList.RowTemplate.Height = 25;
             this.grdList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdList.Size = new System.Drawing.Size(423, 426);
+            this.grdList.Size = new System.Drawing.Size(423, 517);
             this.grdList.TabIndex = 0;
             // 
             // GroupId
@@ -157,19 +157,19 @@ namespace WarehouseRemittance.App.Forms
             this.cmnDelete});
             this.cmGroups.Name = "cmGroups";
             this.cmGroups.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmGroups.Size = new System.Drawing.Size(111, 48);
+            this.cmGroups.Size = new System.Drawing.Size(125, 52);
             // 
             // cmnEdit
             // 
             this.cmnEdit.Name = "cmnEdit";
-            this.cmnEdit.Size = new System.Drawing.Size(110, 22);
+            this.cmnEdit.Size = new System.Drawing.Size(124, 24);
             this.cmnEdit.Text = "ویرایش";
             this.cmnEdit.Click += new System.EventHandler(this.cmnEdit_Click);
             // 
             // cmnDelete
             // 
             this.cmnDelete.Name = "cmnDelete";
-            this.cmnDelete.Size = new System.Drawing.Size(110, 22);
+            this.cmnDelete.Size = new System.Drawing.Size(124, 24);
             this.cmnDelete.Text = "حذف";
             this.cmnDelete.Click += new System.EventHandler(this.cmnDelete_Click);
             // 
@@ -201,12 +201,12 @@ namespace WarehouseRemittance.App.Forms
             // 
             // frmProductGroups
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 517);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grdList);
-            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
