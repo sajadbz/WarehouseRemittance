@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WarehouseRemittance.App.Applications.Extensions;
-using WarehouseRemittance.App.Applications.Utility;
+using WarehouseRemittance.Core.Extensions;
+using WarehouseRemittance.Core.Utility;
 
 namespace WarehouseRemittance.App.Forms.Order
 {

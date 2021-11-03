@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WarehouseRemittance.App.Data.Context;
-using WarehouseRemittance.App.Domain.Entities.Warehouses;
+using WarehouseRemittance.Data.Context;
+using WarehouseRemittance.Domain.Entities.Warehouses;
 
 namespace WarehouseRemittance.App.Forms
 {

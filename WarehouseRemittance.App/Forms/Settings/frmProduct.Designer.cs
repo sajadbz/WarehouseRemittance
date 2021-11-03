@@ -39,16 +39,16 @@
             this.btnCansel = new System.Windows.Forms.Button();
             this.btnSaveOrEdit = new System.Windows.Forms.Button();
             this.dgList = new System.Windows.Forms.DataGridView();
+            this.IdProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdProductNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdGroupProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.IdProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdProductNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdGroupProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -191,6 +191,42 @@
             this.dgList.Size = new System.Drawing.Size(442, 196);
             this.dgList.TabIndex = 0;
             // 
+            // IdProduct
+            // 
+            this.IdProduct.DataPropertyName = "Id";
+            this.IdProduct.FillWeight = 40F;
+            this.IdProduct.HeaderText = "کد";
+            this.IdProduct.MinimumWidth = 6;
+            this.IdProduct.Name = "IdProduct";
+            this.IdProduct.ReadOnly = true;
+            // 
+            // NameProduct
+            // 
+            this.NameProduct.DataPropertyName = "Name";
+            this.NameProduct.FillWeight = 60F;
+            this.NameProduct.HeaderText = "نام کالا";
+            this.NameProduct.MinimumWidth = 6;
+            this.NameProduct.Name = "NameProduct";
+            this.NameProduct.ReadOnly = true;
+            // 
+            // IdProductNumber
+            // 
+            this.IdProductNumber.DataPropertyName = "NumberItem";
+            this.IdProductNumber.FillWeight = 50F;
+            this.IdProductNumber.HeaderText = "کد کالا";
+            this.IdProductNumber.MinimumWidth = 6;
+            this.IdProductNumber.Name = "IdProductNumber";
+            this.IdProductNumber.ReadOnly = true;
+            // 
+            // IdGroupProduct
+            // 
+            this.IdGroupProduct.DataPropertyName = "GroupName";
+            this.IdGroupProduct.FillWeight = 80.04716F;
+            this.IdGroupProduct.HeaderText = "نام گروه کالا";
+            this.IdGroupProduct.MinimumWidth = 6;
+            this.IdGroupProduct.Name = "IdGroupProduct";
+            this.IdGroupProduct.ReadOnly = true;
+            // 
             // cmRightClick
             // 
             this.cmRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -243,42 +279,6 @@
             this.label3.Size = new System.Drawing.Size(47, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "جستجو :";
-            // 
-            // IdProduct
-            // 
-            this.IdProduct.DataPropertyName = "Id";
-            this.IdProduct.FillWeight = 40F;
-            this.IdProduct.HeaderText = "کد";
-            this.IdProduct.MinimumWidth = 6;
-            this.IdProduct.Name = "IdProduct";
-            this.IdProduct.ReadOnly = true;
-            // 
-            // NameProduct
-            // 
-            this.NameProduct.DataPropertyName = "Name";
-            this.NameProduct.FillWeight = 60F;
-            this.NameProduct.HeaderText = "نام کالا";
-            this.NameProduct.MinimumWidth = 6;
-            this.NameProduct.Name = "NameProduct";
-            this.NameProduct.ReadOnly = true;
-            // 
-            // IdProductNumber
-            // 
-            this.IdProductNumber.DataPropertyName = "NumberItem";
-            this.IdProductNumber.FillWeight = 50F;
-            this.IdProductNumber.HeaderText = "کد کالا";
-            this.IdProductNumber.MinimumWidth = 6;
-            this.IdProductNumber.Name = "IdProductNumber";
-            this.IdProductNumber.ReadOnly = true;
-            // 
-            // IdGroupProduct
-            // 
-            this.IdGroupProduct.DataPropertyName = "GroupName";
-            this.IdGroupProduct.FillWeight = 80.04716F;
-            this.IdGroupProduct.HeaderText = "نام گروه کالا";
-            this.IdGroupProduct.MinimumWidth = 6;
-            this.IdGroupProduct.Name = "IdGroupProduct";
-            this.IdGroupProduct.ReadOnly = true;
             // 
             // errorProvider1
             // 

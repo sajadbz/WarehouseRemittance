@@ -177,7 +177,7 @@ namespace WarehouseRemittance.App.Forms.Order
             // 
             // Remittances
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 408);
             this.Controls.Add(this.dgOrder);

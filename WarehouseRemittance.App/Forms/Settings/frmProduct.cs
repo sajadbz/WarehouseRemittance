@@ -8,14 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WarehouseRemittance.App.Applications.Utility;
-using WarehouseRemittance.App.Data.Context;
-using WarehouseRemittance.App.Domain.Entities.Products;
+using WarehouseRemittance.Core.Services;
+using WarehouseRemittance.Core.Utility;
+using WarehouseRemittance.Data.Context;
+using WarehouseRemittance.Domain.Entities.Products;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
     public partial class frmProduct : Form
     {
+        private readonly ProductService _productService = new ProductService();
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
         private static long _currentProductId = 0;
         public frmProduct()
@@ -48,29 +50,12 @@ namespace WarehouseRemittance.App.Forms.Settings
                 return;
             }
 
+            var groupId = (int)cbProductItem.SelectedValue;
             if (_currentProductId == 0)
-            {
-                int rndNumber = 0;
-                do
-                {
-                    rndNumber = Generator.RandomNumber(max: 999999);
-                } while (_context.Products.Any(c => c.NumberItem == rndNumber));
-                Product product = new Product()
-                {
-                    Name = txtName.Text,
-                    GroupId = (int)cbProductItem.SelectedValue,
-                    NumberItem = rndNumber,
-                };
-                _context.Products.Add(product);
-            }
+                _productService.Add(groupId, txtName.Text);
             else
-            {
-                var product = _context.Products.Find(_currentProductId);
-                product.Name = txtName.Text;
-                product.GroupId = (int)cbProductItem.SelectedValue;
-                _context.Products.Update(product);
-            }
-            _context.SaveChanges();
+                _productService.Update(_currentProductId, groupId, txtName.Text);
+
             Clear();
             LoadGrid();
         }
@@ -125,34 +110,10 @@ namespace WarehouseRemittance.App.Forms.Settings
         private void LoadGrid(string search = null)
         {
             dgList.AutoGenerateColumns = false;
-            if (string.IsNullOrWhiteSpace(search))            
-                dgList.DataSource = _context.Products
-                .Include(c => c.Group)
-                .Select(c => new
-                {
-                    c.Id,
-                    c.Name,
-                    c.NumberItem,
-                    c.GroupId,
-                    GroupName = c.Group.Name,
-                })
-                .ToList();            
+            if (string.IsNullOrWhiteSpace(search))
+                dgList.DataSource = _productService.GetAll();
             else
-                dgList.DataSource = _context.Products
-                    .Where(c=>
-                    c.Name.Contains(search) || 
-                    c.Group.Name.Contains(search) ||
-                    c.NumberItem.ToString().Contains(search))
-                    .Include(c => c.Group)
-                    .Select(c => new
-                    {
-                        c.Id,
-                        c.Name,
-                        c.NumberItem,
-                        c.GroupId,
-                        GroupName = c.Group.Name,
-                    })
-                    .ToList();
+                dgList.DataSource = _productService.GetAll(search);
         }
         private void LoadGroups()
         {
