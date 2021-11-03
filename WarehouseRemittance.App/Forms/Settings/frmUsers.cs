@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using WarehouseRemittance.App.Data.Context;
-using WarehouseRemittance.App.Domain.Entities.Users;
-using WarehouseRemittance.App.Applications.Extensions;
+using WarehouseRemittance.Data.Context;
+using WarehouseRemittance.Domain.Entities.Users;
+using WarehouseRemittance.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace WarehouseRemittance.App.Forms.Settings
