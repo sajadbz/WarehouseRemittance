@@ -8,11 +8,12 @@ namespace WarehouseRemittance.App.Forms.Settings
 {
     public partial class frmUsers : Form
     {
-        UserService _userService = new UserService();
+        private readonly IUserService _userService;
         private static int _courrentUserId = 0;
-        public frmUsers()
+        public frmUsers(IUserService userService)
         {
             InitializeComponent();
+            _userService = userService;
         }
         private void frmUsers_Load(object sender, EventArgs e)
         {

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseRemittance.App.Services;
 using WarehouseRemittance.Core.Services;
@@ -14,34 +7,20 @@ namespace WarehouseRemittance.App.Forms
 {
     public partial class frmProductGroups : Form
     {
-        private readonly ProductGroupService _productGroup = new ProductGroupService();
+        private readonly IProductGroupService _productGroup;
         private static int _currentGroupId = 0;
-        public frmProductGroups()
-        {
-            InitializeComponent();            
-        }
 
-       
+        public frmProductGroups(IProductGroupService productGroupService)
+        {
+            InitializeComponent();
+            _productGroup = productGroupService;
+        }
 
         private void frmProductGroups_Load(object sender, EventArgs e)
         {
             LoadGrid();
         }
 
-        private void LoadGrid()
-        {
-            grdList.AutoGenerateColumns = false;
-            grdList.DataSource = _productGroup.GetAll();
-            grdList.MouseDown += GeneralService.DataGridView_MouseDown;
-        }
-        private void Clear()
-        {
-            txtName.Text = "";
-            btnSave.Text = "افزودن";
-            groupBox1.Text = "افزودن گروه جدید";
-            btnCancel.Visible = false;
-            _currentGroupId = 0;
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (_currentGroupId == 0)
@@ -97,6 +76,23 @@ namespace WarehouseRemittance.App.Forms
             this.Close();
         }
 
-        
+        #region Custom Method
+        private void LoadGrid()
+        {
+            grdList.AutoGenerateColumns = false;
+            grdList.DataSource = _productGroup.GetAll();
+
+            grdList.MouseDown += GeneralService.DataGridView_MouseDown;
+        }
+        private void Clear()
+        {
+            txtName.Text = "";
+            btnSave.Text = "افزودن";
+            groupBox1.Text = "افزودن گروه جدید";
+            btnCancel.Visible = false;
+            _currentGroupId = 0;
+        }
+        #endregion
+
     }
 }

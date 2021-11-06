@@ -8,7 +8,16 @@ using WarehouseRemittance.Domain.Entities.Products;
 
 namespace WarehouseRemittance.Core.Services
 {
-    public class ProductService
+    public interface IProductService
+    {
+        ProductDto Find(long pId);
+        List<ProductDto> GetAll();
+        List<ProductDto> GetAll(string search);
+        long Add(int gId, string name);
+        public void Update(long pId, int gId, string name);
+        public void Delete(long pId);
+    }
+    public class ProductService : IProductService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
         public List<ProductDto> GetAll()

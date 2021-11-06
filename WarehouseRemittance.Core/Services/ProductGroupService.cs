@@ -6,7 +6,16 @@ using WarehouseRemittance.Domain.Entities.Products;
 
 namespace WarehouseRemittance.Core.Services
 {
-    public class ProductGroupService
+    public interface IProductGroupService
+    {
+        List<ProductGroupDto> GetAll();
+        List<ProductGroupDto> GetAll(string search);
+        long Add(string name);
+        void Update(int groupId, string name);
+        ProductGroupDto Find(int groupId);
+        void Delete(int groupId);
+    }
+    public class ProductGroupService : IProductGroupService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
 

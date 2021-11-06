@@ -9,7 +9,16 @@ using WarehouseRemittance.Domain.Entities.Warehouses;
 
 namespace WarehouseRemittance.Core.Services
 {
-    public class WarehouseService
+    public interface IWarehouseService
+    {
+        List<WarehouseDto> GetAll();
+        List<WarehouseDto> GetAll(string search);
+        int Add(string wName, string wPhone, string wAddress);
+        void Delete(int wId);
+        WarehouseDto Find(int wId);
+        void Update(int wId, string wName, string wPhone, string wAddress);
+    }
+    public class WarehouseService : IWarehouseService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
 

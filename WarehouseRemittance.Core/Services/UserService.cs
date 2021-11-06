@@ -10,7 +10,16 @@ using WarehouseRemittance.Domain.Entities.Users;
 
 namespace WarehouseRemittance.Core.Services
 {
-    public class UserService
+    public interface IUserService
+    {
+        List<UserDto> GetAll();
+        List<UserDto> GetAll(string Search);
+        public void Delete(int uId);
+        public UserDto Find(int uId);
+        int Add(string uName, string uPhone, int uType);
+        void Update(int uId, string uName, string uPhone, int uType);
+    }
+    public class UserService :IUserService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
         public List<UserDto> GetAll()

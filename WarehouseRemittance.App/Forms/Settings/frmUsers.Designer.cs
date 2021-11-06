@@ -197,6 +197,8 @@
             this.dgList.AllowUserToAddRows = false;
             this.dgList.AllowUserToDeleteRows = false;
             this.dgList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdUser,

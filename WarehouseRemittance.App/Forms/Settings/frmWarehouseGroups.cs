@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using WarehouseRemittance.App.Services;
 using WarehouseRemittance.Core.Services;
-using WarehouseRemittance.Domain.Entities.Warehouses;
 
 namespace WarehouseRemittance.App.Forms
 {
     public partial class frmWarehouseGroups : Form
     {
-        WarehouseService _warehouse = new WarehouseService();
+        private readonly IWarehouseService _warehouse;
         private static int _currentGroupId = 0;
 
-        public frmWarehouseGroups()
+
+        public frmWarehouseGroups(IWarehouseService warehouseService)
         {
             InitializeComponent();
+            _warehouse = warehouseService;
         }
-
 
         private void frmWarehouseGroups_Load(object sender, EventArgs e)
         {
@@ -94,6 +93,8 @@ namespace WarehouseRemittance.App.Forms
                 dgList.DataSource = _warehouse.GetAll();
             else
                 dgList.DataSource = _warehouse.GetAll(search);
+
+            dgList.MouseDown += GeneralService.DataGridView_MouseDown;
         }
         private void Clear()
         {

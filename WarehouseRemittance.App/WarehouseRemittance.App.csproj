@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>icons8-warehouse-96.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WarehouseRemittance.Core\WarehouseRemittance.Core.csproj" />
+    <ProjectReference Include="..\WarehouseRemittance.IoC\WarehouseRemittance.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
