@@ -1,24 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseRemittance.Core.Services;
-using WarehouseRemittance.Core.Utility;
-using WarehouseRemittance.Data.Context;
-using WarehouseRemittance.Domain.Entities.Products;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
     public partial class frmProduct : Form
     {
         private readonly ProductService _productService = new ProductService();
-        WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
         private static long _currentProductId = 0;
         public frmProduct()
         {
@@ -50,12 +39,12 @@ namespace WarehouseRemittance.App.Forms.Settings
                 return;
             }
 
-            var groupId = (int)cbProductItem.SelectedValue;
+            int ProductId = Convert.ToInt32(cbProductItem.SelectedValue);
             if (_currentProductId == 0)
-                _productService.Add(groupId, txtName.Text);
+                _productService.Add(ProductId, txtName.Text);
             else
-                _productService.Update(_currentProductId, groupId, txtName.Text);
-
+                _productService.Update(_currentProductId, ProductId, txtName.Text);
+            
             Clear();
             LoadGrid();
         }
@@ -65,11 +54,11 @@ namespace WarehouseRemittance.App.Forms.Settings
             if (dgList.RowCount > 0)
             {
                 var itemId = (long)dgList.SelectedRows[0].Cells[0].Value;
-                var item = _context.Products.Find(itemId);
+                var item = _productService.FindProductId(itemId);
 
                 _currentProductId = itemId;
                 txtName.Text = item.Name;
-                cbProductItem.SelectedValue = item.GroupId;
+                cbProductItem.SelectedValue = item.Group;
                 btnSaveOrEdit.Text = "ویرایش";
                 groupBox1.Text = $"ویرایش کالا ({item.NumberItem})";
                 btnCansel.Visible = true;
@@ -84,8 +73,7 @@ namespace WarehouseRemittance.App.Forms.Settings
                 if (MessageBox.Show($"آیا مایل به حذف کالا{name} می باشید ؟", "حذف کالا", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     var itemId = (Int64)dgList.SelectedRows[0].Cells[0].Value;
-                    _context.Products.Remove(_context.Products.Find(itemId));
-                    _context.SaveChanges();
+                    _productService.Delete(itemId);
                     LoadGrid();
                     Clear();
                 }
@@ -117,7 +105,7 @@ namespace WarehouseRemittance.App.Forms.Settings
         }
         private void LoadGroups()
         {
-            cbProductItem.DataSource = _context.ProductGroups.ToList();
+            cbProductItem.DataSource = _productService.FindGroupId();
         }
         #endregion
 

@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WarehouseRemittance.Core.Dtos.Products;
 using WarehouseRemittance.Core.Utility;
 using WarehouseRemittance.Data.Context;
@@ -52,7 +49,7 @@ namespace WarehouseRemittance.Core.Services
         /// </summary>
         /// <param name="gId">GroupId</param>
         /// <param name="name">Product name</param>
-        public long Add(int gId, string name)
+        public long Add(int pId, string name)
         {
             int rndNumber = 0;
             do
@@ -62,7 +59,7 @@ namespace WarehouseRemittance.Core.Services
             Product product = new Product()
             {
                 Name = name,
-                GroupId = gId,
+                GroupId = pId,
                 NumberItem = rndNumber,
             };
             _context.Products.Add(product);
@@ -76,14 +73,50 @@ namespace WarehouseRemittance.Core.Services
         /// <param name="pId">ProductId</param>
         /// <param name="gId">New Product GroupId</param>
         /// <param name="name">New Product Name</param>
-        /// <returns></returns>
         public void Update(long pId, int gId, string name)
         {
             var product = _context.Products.Find(pId);
             product.Name = name;
             product.GroupId = gId;
-            _context.Products.Update(product);            
-            _context.SaveChanges();            
+            _context.Products.Update(product);
+            _context.SaveChanges();
+        }
+        /// <summary>
+        /// Delete product
+        /// </summary>
+        /// <param name="pId">New Product GroupId</param>
+        public void Delete(long pId)
+        {
+            _context.Products.Remove(_context.Products.Find(pId));
+            _context.SaveChanges();
+        }
+        /// <summary>
+        /// Find product
+        /// </summary>
+        /// <param name="pId">New ProductId</param>
+        /// <returns></returns>
+        public Product FindProductId(long pId)
+        {
+
+            var product = _context.Products.Find(pId);
+            return product;
+        }
+        /// <summary>
+        /// Find GroupId
+        /// </summary>
+        /// <returns></returns>
+        public List<ProductDto> FindGroupId()
+        {
+
+            return _context.Products
+                .Include(c => c.Group)
+                .Select(c => new ProductDto
+                {
+                    GroupId = c.GroupId
+                })
+                .ToList();
+
+
         }
     }
 }

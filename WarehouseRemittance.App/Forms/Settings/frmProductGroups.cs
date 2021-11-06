@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WarehouseRemittance.Data.Context;
-using WarehouseRemittance.Domain.Entities.Products;
+using WarehouseRemittance.Core.Services;
 
 namespace WarehouseRemittance.App.Forms
 {
     public partial class frmProductGroups : Form
     {
-        WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
+        private readonly ProductGroupService _productGroup = new ProductGroupService();
         private static int _currentGroupId = 0;
         public frmProductGroups()
         {
@@ -29,7 +28,7 @@ namespace WarehouseRemittance.App.Forms
         private void LoadGrid()
         {
             grdList.AutoGenerateColumns = false;
-            grdList.DataSource = _context.ProductGroups.ToList();
+            grdList.DataSource = _productGroup.GetAll();
         }
         private void Clear()
         {
@@ -43,20 +42,14 @@ namespace WarehouseRemittance.App.Forms
         {
             if (_currentGroupId == 0)
             {
-                ProductGroup group = new ProductGroup
-                {
-                    Name = txtName.Text
-                };
-                _context.ProductGroups.Add(group);
+                _productGroup.Add(txtName.Text);
             }
             else
             {
-                var group = _context.ProductGroups.Find(_currentGroupId);
-                group.Name = txtName.Text;
-                _context.ProductGroups.Update(group);
+                _productGroup.Update(_currentGroupId, txtName.Text);
             }
 
-            _context.SaveChanges();
+
             Clear();
             LoadGrid();
         }
@@ -65,10 +58,10 @@ namespace WarehouseRemittance.App.Forms
         {
             if (grdList.RowCount > 0)
             {
-                var groupId = (int)grdList.SelectedRows[0].Cells[0].Value;
-                var group = _context.ProductGroups.Find(groupId);
-                txtName.Text = group.Name;
-                _currentGroupId = group.Id;
+                long groupId =Convert.ToInt64( grdList.SelectedRows[0].Cells[0].Value);
+                var groupName = _productGroup.FindProductId(groupId);
+
+                txtName.Text = groupName.Name;
                 groupBox1.Text = btnSave.Text = "ویرایش";
                 btnCancel.Visible = true;
             }
@@ -81,15 +74,14 @@ namespace WarehouseRemittance.App.Forms
 
         private void cmnDelete_Click(object sender, EventArgs e)
         {
-            if (grdList.RowCount > 0)               
+            if (grdList.RowCount > 0)
             {
                 string Name = grdList.SelectedRows[0].Cells[1].Value.ToString();
                 if (MessageBox.Show($"آیا گروه {Name} حذف کنم ؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    
+
                     var groupId = (int)grdList.SelectedRows[0].Cells[0].Value;
-                    _context.ProductGroups.Remove(_context.ProductGroups.Find(groupId));
-                    _context.SaveChanges();
+                    _productGroup.Delete(groupId);
                     Clear();
                     LoadGrid();
                 }
