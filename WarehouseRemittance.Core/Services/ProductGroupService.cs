@@ -11,26 +11,24 @@ namespace WarehouseRemittance.Core.Services
 {
     public class ProductGroupService
     {
-         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
+        WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
 
         public List<ProductGroupDto> GetAll()
         {
             return _context.ProductGroups
                 .Select(c => new ProductGroupDto
                 {
+                    Id = c.Id,
                     Name = c.Name
                 })
                 .ToList();
         }
-        public List<ProductGroupDto> GetAll(string serach)
+        public List<ProductGroupDto> GetAll(string search)
         {
             return _context.ProductGroups
                 .Where(c =>
-                c.Name.Contains(serach))
-                .Select(c => new ProductGroupDto
-                {
-                    Name = c.Name
-                })
+                c.Name.Contains(search))
+                .Select(c => c.ToDto())
                 .ToList();
         }
         /// <summary>
@@ -38,7 +36,7 @@ namespace WarehouseRemittance.Core.Services
         /// </summary>
         /// <param name="name">Group Name</param>
         /// <returns></returns>
-        public long Add(String name)
+        public long Add(string name)
         {
             ProductGroup group = new ProductGroup
             {
@@ -51,31 +49,31 @@ namespace WarehouseRemittance.Core.Services
         /// <summary>
         /// Update Name ProductGroup
         /// </summary>
-        /// <param name="pId">ProductGroup ID</param>
+        /// <param name="groupId">ProductGroup ID</param>
         /// <param name="name">Name ProductGroup</param>
-        public void Update(int pId,string name)
+        public void Update(int groupId, string name)
         {
-            var group = _context.ProductGroups.Find(pId);
-            group.Name = name; ;
+            var group = _context.ProductGroups.Find(groupId);
+            group.Name = name;
             _context.ProductGroups.Update(group);
             _context.SaveChanges();
         }
         /// <summary>
-        /// Find product
+        /// Find product group
         /// </summary>
-        /// <param name="pId">New ProductGroupId</param>
+        /// <param name="groupId">New ProductGroupId</param>
         /// <returns></returns>
-        public Product FindProductId(long pId)
+        public ProductGroupDto Find(int groupId)
         {
-            var product = _context.Products.Find(pId);
-            return product;
+            var product = _context.ProductGroups.Find(groupId);
+            return product.ToDto();
         }
         /// <summary>
         /// Delete GroupName
         /// </summary>
-        public void Delete(long pId)
+        public void Delete(int groupId)
         {
-            _context.ProductGroups.Remove(_context.ProductGroups.Find(pId));
+            _context.ProductGroups.Remove(_context.ProductGroups.Find(groupId));
             _context.SaveChanges();
         }
     }

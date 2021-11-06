@@ -6,6 +6,7 @@ using WarehouseRemittance.Data.Context;
 using WarehouseRemittance.Domain.Entities.Users;
 using WarehouseRemittance.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
+using WarehouseRemittance.App.Services;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
@@ -134,6 +135,8 @@ namespace WarehouseRemittance.App.Forms.Settings
                     OrderCount = c.Orders.Count
                 })
                 .ToList();
+
+            dgList.MouseDown += GeneralService.DataGridView_MouseDown;
         }
         #endregion
     }

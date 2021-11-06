@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbProductItem = new System.Windows.Forms.ComboBox();
+            this.cbProductGroups = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCansel = new System.Windows.Forms.Button();
@@ -63,7 +63,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbProductItem);
+            this.groupBox1.Controls.Add(this.cbProductGroups);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 249);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -100,17 +100,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "نام کالا :";
             // 
-            // cbProductItem
+            // cbProductGroups
             // 
-            this.cbProductItem.DisplayMember = "Name";
-            this.cbProductItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProductItem.FormattingEnabled = true;
-            this.cbProductItem.Location = new System.Drawing.Point(10, 44);
-            this.cbProductItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbProductItem.Name = "cbProductItem";
-            this.cbProductItem.Size = new System.Drawing.Size(255, 23);
-            this.cbProductItem.TabIndex = 0;
-            this.cbProductItem.ValueMember = "Id";
+            this.cbProductGroups.DisplayMember = "Name";
+            this.cbProductGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProductGroups.FormattingEnabled = true;
+            this.cbProductGroups.Location = new System.Drawing.Point(10, 44);
+            this.cbProductGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbProductGroups.Name = "cbProductGroups";
+            this.cbProductGroups.Size = new System.Drawing.Size(255, 23);
+            this.cbProductGroups.TabIndex = 0;
+            this.cbProductGroups.ValueMember = "Id";
             // 
             // groupBox2
             // 
@@ -329,7 +329,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbProductItem;
+        private System.Windows.Forms.ComboBox cbProductGroups;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label3;

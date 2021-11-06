@@ -1,4 +1,6 @@
 ﻿
+using WarehouseRemittance.App.Services;
+
 namespace WarehouseRemittance.App.Forms
 {
     partial class frmProductGroups
@@ -68,7 +70,7 @@ namespace WarehouseRemittance.App.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(385, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 18);
+            this.label1.Size = new System.Drawing.Size(29, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "نام :";
             // 
@@ -77,7 +79,7 @@ namespace WarehouseRemittance.App.Forms
             this.txtName.Location = new System.Drawing.Point(12, 37);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(367, 26);
+            this.txtName.Size = new System.Drawing.Size(367, 22);
             this.txtName.TabIndex = 0;
             // 
             // btnCancel
@@ -157,19 +159,19 @@ namespace WarehouseRemittance.App.Forms
             this.cmnDelete});
             this.cmGroups.Name = "cmGroups";
             this.cmGroups.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmGroups.Size = new System.Drawing.Size(125, 52);
+            this.cmGroups.Size = new System.Drawing.Size(111, 48);
             // 
             // cmnEdit
             // 
             this.cmnEdit.Name = "cmnEdit";
-            this.cmnEdit.Size = new System.Drawing.Size(124, 24);
+            this.cmnEdit.Size = new System.Drawing.Size(110, 22);
             this.cmnEdit.Text = "ویرایش";
             this.cmnEdit.Click += new System.EventHandler(this.cmnEdit_Click);
             // 
             // cmnDelete
             // 
             this.cmnDelete.Name = "cmnDelete";
-            this.cmnDelete.Size = new System.Drawing.Size(124, 24);
+            this.cmnDelete.Size = new System.Drawing.Size(110, 22);
             this.cmnDelete.Text = "حذف";
             this.cmnDelete.Click += new System.EventHandler(this.cmnDelete_Click);
             // 
@@ -201,7 +203,7 @@ namespace WarehouseRemittance.App.Forms
             // 
             // frmProductGroups
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 517);
             this.Controls.Add(this.groupBox1);

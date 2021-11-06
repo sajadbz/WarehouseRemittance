@@ -5,15 +5,21 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseRemittance.App", "WarehouseRemittance.App\WarehouseRemittance.App.csproj", "{EAC5A18F-1D8D-46B5-97FC-012E188880F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseRemittance.Core", "WarehouseRemittance.Core\WarehouseRemittance.Core.csproj", "{B6176650-F254-434D-83D1-0EBB3B04D649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseRemittance.Core", "WarehouseRemittance.Core\WarehouseRemittance.Core.csproj", "{B6176650-F254-434D-83D1-0EBB3B04D649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseRemittance.Data", "WarehouseRemittance.Data\WarehouseRemittance.Data.csproj", "{D428DB2B-5F41-48B7-B9FA-A56BD77D973E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseRemittance.Data", "WarehouseRemittance.Data\WarehouseRemittance.Data.csproj", "{D428DB2B-5F41-48B7-B9FA-A56BD77D973E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseRemittance.Domain", "WarehouseRemittance.Domain\WarehouseRemittance.Domain.csproj", "{5FDD7BF1-2A0D-43BB-8731-F02B8E5FAF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseRemittance.Domain", "WarehouseRemittance.Domain\WarehouseRemittance.Domain.csproj", "{5FDD7BF1-2A0D-43BB-8731-F02B8E5FAF59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseRemittance.WpfApp", "WarehouseRemittance.WpfApp\WarehouseRemittance.WpfApp.csproj", "{363AE97B-C080-49B8-8DAD-BF00AB33D4F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseRemittance.WpfApp", "WarehouseRemittance.WpfApp\WarehouseRemittance.WpfApp.csproj", "{363AE97B-C080-49B8-8DAD-BF00AB33D4F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{481DE59D-ACAB-46BD-BAE5-80892B32EA8C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{481DE59D-ACAB-46BD-BAE5-80892B32EA8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{D47AFEC5-F992-45EE-8884-4E7F34BCC983}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1395E60C-0AE2-4130-8E44-180AF51F7E83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{28CD26CB-C850-4476-88E8-4ED194CB1F95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +53,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EAC5A18F-1D8D-46B5-97FC-012E188880F4} = {481DE59D-ACAB-46BD-BAE5-80892B32EA8C}
+		{B6176650-F254-434D-83D1-0EBB3B04D649} = {D47AFEC5-F992-45EE-8884-4E7F34BCC983}
+		{D428DB2B-5F41-48B7-B9FA-A56BD77D973E} = {1395E60C-0AE2-4130-8E44-180AF51F7E83}
+		{5FDD7BF1-2A0D-43BB-8731-F02B8E5FAF59} = {28CD26CB-C850-4476-88E8-4ED194CB1F95}
 		{363AE97B-C080-49B8-8DAD-BF00AB33D4F4} = {481DE59D-ACAB-46BD-BAE5-80892B32EA8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

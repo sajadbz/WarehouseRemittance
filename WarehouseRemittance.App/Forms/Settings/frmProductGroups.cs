@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarehouseRemittance.App.Services;
 using WarehouseRemittance.Core.Services;
 
 namespace WarehouseRemittance.App.Forms
@@ -17,8 +18,10 @@ namespace WarehouseRemittance.App.Forms
         private static int _currentGroupId = 0;
         public frmProductGroups()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
+
+       
 
         private void frmProductGroups_Load(object sender, EventArgs e)
         {
@@ -29,6 +32,7 @@ namespace WarehouseRemittance.App.Forms
         {
             grdList.AutoGenerateColumns = false;
             grdList.DataSource = _productGroup.GetAll();
+            grdList.MouseDown += GeneralService.DataGridView_MouseDown;
         }
         private void Clear()
         {
@@ -58,8 +62,8 @@ namespace WarehouseRemittance.App.Forms
         {
             if (grdList.RowCount > 0)
             {
-                long groupId =Convert.ToInt64( grdList.SelectedRows[0].Cells[0].Value);
-                var groupName = _productGroup.FindProductId(groupId);
+                var groupId =(int) grdList.SelectedRows[0].Cells[0].Value;
+                var groupName = _productGroup.Find(groupId);
 
                 txtName.Text = groupName.Name;
                 groupBox1.Text = btnSave.Text = "ویرایش";
@@ -92,5 +96,7 @@ namespace WarehouseRemittance.App.Forms
         {
             this.Close();
         }
+
+        
     }
 }

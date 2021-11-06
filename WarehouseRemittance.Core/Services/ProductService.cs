@@ -15,14 +15,7 @@ namespace WarehouseRemittance.Core.Services
         {
             return _context.Products
                 .Include(c => c.Group)
-                .Select(c => new ProductDto
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    NumberItem = c.NumberItem,
-                    GroupId = c.GroupId,
-                    GroupName = c.Group.Name,
-                })
+                .Select(c => c.ToDto())
                 .ToList();
         }
         public List<ProductDto> GetAll(string search)
@@ -33,14 +26,7 @@ namespace WarehouseRemittance.Core.Services
                      c.Group.Name.Contains(search) ||
                      c.NumberItem.ToString().Contains(search))
                      .Include(c => c.Group)
-                     .Select(c => new ProductDto
-                     {
-                         Id = c.Id,
-                         Name = c.Name,
-                         NumberItem = c.NumberItem,
-                         GroupId = c.GroupId,
-                         GroupName = c.Group.Name,
-                     })
+                     .Select(c => c.ToDto())
                      .ToList();
         }
 
@@ -49,7 +35,7 @@ namespace WarehouseRemittance.Core.Services
         /// </summary>
         /// <param name="gId">GroupId</param>
         /// <param name="name">Product name</param>
-        public long Add(int pId, string name)
+        public long Add(int gId, string name)
         {
             int rndNumber = 0;
             do
@@ -59,7 +45,7 @@ namespace WarehouseRemittance.Core.Services
             Product product = new Product()
             {
                 Name = name,
-                GroupId = pId,
+                GroupId = gId,
                 NumberItem = rndNumber,
             };
             _context.Products.Add(product);
@@ -95,28 +81,13 @@ namespace WarehouseRemittance.Core.Services
         /// </summary>
         /// <param name="pId">New ProductId</param>
         /// <returns></returns>
-        public Product FindProductId(long pId)
+        public ProductDto Find(long pId)
         {
-
-            var product = _context.Products.Find(pId);
-            return product;
-        }
-        /// <summary>
-        /// Find GroupId
-        /// </summary>
-        /// <returns></returns>
-        public List<ProductDto> FindGroupId()
-        {
-
-            return _context.Products
+            var product = _context.Products
                 .Include(c => c.Group)
-                .Select(c => new ProductDto
-                {
-                    GroupId = c.GroupId
-                })
-                .ToList();
-
-
+                .Single(c => c.Id == pId);
+            return product.ToDto();
         }
+
     }
 }
