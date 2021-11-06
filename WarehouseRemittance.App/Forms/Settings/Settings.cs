@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarehouseRemittance.Core.Services;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
@@ -40,7 +42,9 @@ namespace WarehouseRemittance.App.Forms.Settings
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new frmProduct().ShowDialog();
+            // new frmProduct(new ProductService(),new ProductGroupService()).ShowDialog();
+            var frm = Program.ServiceProvider.GetService<frmProduct>();
+            frm.ShowDialog();
         }
     }
 }

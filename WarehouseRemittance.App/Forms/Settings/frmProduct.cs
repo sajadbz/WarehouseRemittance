@@ -8,12 +8,14 @@ namespace WarehouseRemittance.App.Forms.Settings
 {
     public partial class frmProduct : Form
     {
-        private readonly ProductService _productService = new ProductService();
-        private readonly ProductGroupService _productGroupService = new ProductGroupService();
+        private readonly IProductService _productService;
+        private readonly IProductGroupService _productGroupService;
         private static long _currentProductId = 0;
-        public frmProduct()
+        public frmProduct(IProductService productService, IProductGroupService productGroupService)
         {
             InitializeComponent();
+            _productService = productService;
+            _productGroupService = productGroupService;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
