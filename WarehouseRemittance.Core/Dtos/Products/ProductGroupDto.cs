@@ -8,6 +8,7 @@ namespace WarehouseRemittance.Core.Dtos.Products
 {
     public class ProductGroupDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
