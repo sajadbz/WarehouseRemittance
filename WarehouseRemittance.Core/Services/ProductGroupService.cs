@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WarehouseRemittance.Core.Dtos.Products;
 using WarehouseRemittance.Data.Context;
 using WarehouseRemittance.Domain.Entities.Products;

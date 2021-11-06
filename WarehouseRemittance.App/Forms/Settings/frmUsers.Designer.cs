@@ -50,11 +50,15 @@
             this.cmRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.cmRightClick.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,9 +91,9 @@
             // 
             this.rbCustomer.AutoSize = true;
             this.rbCustomer.Checked = true;
-            this.rbCustomer.Location = new System.Drawing.Point(64, 18);
+            this.rbCustomer.Location = new System.Drawing.Point(77, 22);
             this.rbCustomer.Name = "rbCustomer";
-            this.rbCustomer.Size = new System.Drawing.Size(62, 18);
+            this.rbCustomer.Size = new System.Drawing.Size(77, 22);
             this.rbCustomer.TabIndex = 6;
             this.rbCustomer.TabStop = true;
             this.rbCustomer.Tag = "Customer";
@@ -99,9 +103,9 @@
             // rbDriver
             // 
             this.rbDriver.AutoSize = true;
-            this.rbDriver.Location = new System.Drawing.Point(6, 18);
+            this.rbDriver.Location = new System.Drawing.Point(9, 22);
             this.rbDriver.Name = "rbDriver";
-            this.rbDriver.Size = new System.Drawing.Size(52, 18);
+            this.rbDriver.Size = new System.Drawing.Size(62, 22);
             this.rbDriver.TabIndex = 7;
             this.rbDriver.Tag = "Driver";
             this.rbDriver.Text = "راننده";
@@ -111,15 +115,15 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(178, 48);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(145, 22);
+            this.txtPhone.Size = new System.Drawing.Size(145, 26);
             this.txtPhone.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(286, 31);
+            this.label2.Location = new System.Drawing.Point(277, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 14);
+            this.label2.Size = new System.Drawing.Size(46, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "تلفن :";
             // 
@@ -127,15 +131,15 @@
             // 
             this.txtName.Location = new System.Drawing.Point(329, 48);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(182, 22);
+            this.txtName.Size = new System.Drawing.Size(182, 26);
             this.txtName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(444, 31);
+            this.label1.Location = new System.Drawing.Point(429, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 14);
+            this.label1.Size = new System.Drawing.Size(82, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "نام شخص :";
             // 
@@ -202,7 +206,7 @@
             this.OrderCount});
             this.dgList.ContextMenuStrip = this.cmRightClick;
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgList.Location = new System.Drawing.Point(0, 0);
+            this.dgList.Location = new System.Drawing.Point(0, 48);
             this.dgList.MultiSelect = false;
             this.dgList.Name = "dgList";
             this.dgList.ReadOnly = true;
@@ -210,7 +214,7 @@
             this.dgList.RowHeadersWidth = 51;
             this.dgList.RowTemplate.Height = 29;
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgList.Size = new System.Drawing.Size(517, 434);
+            this.dgList.Size = new System.Drawing.Size(517, 302);
             this.dgList.TabIndex = 1;
             // 
             // IdUser
@@ -240,7 +244,7 @@
             // 
             // GroupUser
             // 
-            this.GroupUser.DataPropertyName = "UserType";
+            this.GroupUser.DataPropertyName = "UserTypeString";
             this.GroupUser.HeaderText = "گروه شخص";
             this.GroupUser.MinimumWidth = 6;
             this.GroupUser.Name = "GroupUser";
@@ -250,6 +254,7 @@
             // 
             this.OrderCount.DataPropertyName = "OrderCount";
             this.OrderCount.HeaderText = "تعداد سفارش";
+            this.OrderCount.MinimumWidth = 6;
             this.OrderCount.Name = "OrderCount";
             this.OrderCount.ReadOnly = true;
             // 
@@ -261,29 +266,57 @@
             this.cmDelete});
             this.cmRightClick.Name = "cmRightClick";
             this.cmRightClick.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmRightClick.Size = new System.Drawing.Size(111, 48);
+            this.cmRightClick.Size = new System.Drawing.Size(125, 52);
             // 
             // cmEdit
             // 
             this.cmEdit.Name = "cmEdit";
-            this.cmEdit.Size = new System.Drawing.Size(110, 22);
+            this.cmEdit.Size = new System.Drawing.Size(124, 24);
             this.cmEdit.Text = "ویرایش";
             this.cmEdit.Click += new System.EventHandler(this.cmEdit_Click);
             // 
             // cmDelete
             // 
             this.cmDelete.Name = "cmDelete";
-            this.cmDelete.Size = new System.Drawing.Size(110, 22);
+            this.cmDelete.Size = new System.Drawing.Size(124, 24);
             this.cmDelete.Text = "حذف";
             this.cmDelete.Click += new System.EventHandler(this.cmDelete_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(517, 48);
+            this.panel1.TabIndex = 13;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(12, 9);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(404, 26);
+            this.txtSearch.TabIndex = 3;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(423, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 18);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "جستجو :";
+            // 
             // frmUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 511);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgList);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -302,6 +335,8 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
             this.cmRightClick.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -324,6 +359,9 @@
         private System.Windows.Forms.RadioButton rbCustomer;
         private System.Windows.Forms.RadioButton rbDriver;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneUser;

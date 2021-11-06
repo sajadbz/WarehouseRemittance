@@ -16,7 +16,7 @@ namespace WarehouseRemittance.Domain.Entities.Warehouses
         [MaxLength(150)]
         public string Name { get; set; }
         [MaxLength(500)]
-        public string Address { get; set; }        
+        public string Address { get; set; }
         [MaxLength(50)]
         public string Phone { get; set; }
 

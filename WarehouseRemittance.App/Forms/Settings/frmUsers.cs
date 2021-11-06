@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using WarehouseRemittance.Data.Context;
-using WarehouseRemittance.Domain.Entities.Users;
-using WarehouseRemittance.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
 using WarehouseRemittance.App.Services;
+using WarehouseRemittance.Core.Services;
+using WarehouseRemittance.Domain.Entities.Users;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
     public partial class frmUsers : Form
     {
-        WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
+        UserService _userService = new UserService();
         private static int _courrentUserId = 0;
         public frmUsers()
         {
@@ -27,23 +23,12 @@ namespace WarehouseRemittance.App.Forms.Settings
         {
             if (_courrentUserId == 0)
             {
-                User user = new User()
-                {
-                    Name = txtName.Text,
-                    Phone = txtPhone.Text,
-                    UserType = GetSelectedType()
-                };
-                _context.Users.Add(user);
+                _userService.Add(txtName.Text, txtPhone.Text, (int)GetSelectedType());
             }
             else
             {
-                var user = _context.Users.Find(_courrentUserId);
-                user.Name = txtName.Text;
-                user.Phone = txtPhone.Text;
-                user.UserType = GetSelectedType();
-                _context.Users.Update(user);
+                _userService.Update(_courrentUserId, txtName.Text, txtPhone.Text, (int)GetSelectedType());
             }
-            _context.SaveChanges();
             Clear();
             LoadGrid();
         }
@@ -53,7 +38,7 @@ namespace WarehouseRemittance.App.Forms.Settings
             if (dgList.RowCount > 0)
             {
                 var userId = (int)dgList.SelectedRows[0].Cells[0].Value;
-                var user = _context.Users.Find(userId);
+                var user = _userService.Find(userId);
                 _courrentUserId = userId;
                 txtName.Text = user.Name;
                 txtPhone.Text = user.Phone;
@@ -86,8 +71,7 @@ namespace WarehouseRemittance.App.Forms.Settings
                 if (MessageBox.Show($"آیا از حذف شخص {name} مطمئن هستید ؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     var userId = (int)dgList.SelectedRows[0].Cells[0].Value;
-                    _context.Users.Remove(_context.Users.Find(userId));
-                    _context.SaveChanges();
+                    _userService.Delete(userId);
                     Clear();
                     LoadGrid();
                 }
@@ -120,24 +104,23 @@ namespace WarehouseRemittance.App.Forms.Settings
             btnCansel.Visible = false;
             rbCustomer.Checked = true;
         }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            LoadGrid(txtSearch.Text);
+        }
 
-        private void LoadGrid()
+        private void LoadGrid(string search = null)
         {
             dgList.AutoGenerateColumns = false;
-            dgList.DataSource = _context.Users
-                .Include(c=>c.Orders)
-                .Select(c => new
-                {
-                    c.Id,
-                    c.Name,
-                    c.Phone,
-                    UserType = c.UserType.GetDescription(),
-                    OrderCount = c.Orders.Count
-                })
-                .ToList();
+            if (string.IsNullOrWhiteSpace(search))
+                dgList.DataSource = _userService.GetAll();
+            else
+                dgList.DataSource = _userService.GetAll(search);
 
             dgList.MouseDown += GeneralService.DataGridView_MouseDown;
         }
         #endregion
+
+
     }
 }
