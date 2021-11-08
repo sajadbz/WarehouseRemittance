@@ -30,6 +30,7 @@ namespace WarehouseRemittance.IoC
                 .AddTransient<IProductGroupService, ProductGroupService>()
             .AddTransient<IProductService, ProductService>()
             .AddTransient<IUserService, UserService>();
+
         }
     }
 }

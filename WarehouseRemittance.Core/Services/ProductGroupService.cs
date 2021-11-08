@@ -15,6 +15,7 @@ namespace WarehouseRemittance.Core.Services
         ProductGroupDto Find(int groupId);
         void Delete(int groupId);
     }
+
     public class ProductGroupService : IProductGroupService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();

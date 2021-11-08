@@ -11,6 +11,7 @@ namespace WarehouseRemittance.App.Forms.Settings
         private readonly IProductService _productService;
         private readonly IProductGroupService _productGroupService;
         private static long _currentProductId = 0;
+
         public frmProduct(IProductService productService,IProductGroupService productGroupService)
         {
             InitializeComponent();

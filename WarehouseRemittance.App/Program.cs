@@ -33,6 +33,7 @@ namespace WarehouseRemittance.App
             ServiceProvider = container.Register(services);
 
             Application.Run(ServiceProvider.GetService<Form1>());
+
         }
     }
 }
