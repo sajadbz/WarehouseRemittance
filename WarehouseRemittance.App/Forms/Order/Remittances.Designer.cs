@@ -138,6 +138,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.dgOrder.Location = new System.Drawing.Point(0, 94);
             this.dgOrder.MultiSelect = false;
             this.dgOrder.Name = "dgOrder";
+            this.dgOrder.ReadOnly = true;
             this.dgOrder.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgOrder.RowHeadersVisible = false;
             this.dgOrder.RowHeadersWidth = 51;
@@ -147,27 +148,35 @@ namespace WarehouseRemittance.App.Forms.Order
             // 
             // IdOrder
             // 
+            this.IdOrder.DataPropertyName = "OrderCode";
             this.IdOrder.HeaderText = "کد حواله";
             this.IdOrder.MinimumWidth = 6;
             this.IdOrder.Name = "IdOrder";
+            this.IdOrder.ReadOnly = true;
             // 
             // User
             // 
+            this.User.DataPropertyName = "UserFullName";
             this.User.HeaderText = "گیرنده حواله";
             this.User.MinimumWidth = 6;
             this.User.Name = "User";
+            this.User.ReadOnly = true;
             // 
             // DataOrder
             // 
+            this.DataOrder.DataPropertyName = "CreateDate";
             this.DataOrder.HeaderText = "تاریخ حواله";
             this.DataOrder.MinimumWidth = 6;
             this.DataOrder.Name = "DataOrder";
+            this.DataOrder.ReadOnly = true;
             // 
             // CountItems
             // 
+            this.CountItems.DataPropertyName = "ProductCount";
             this.CountItems.HeaderText = "تعداد کالا";
             this.CountItems.MinimumWidth = 6;
             this.CountItems.Name = "CountItems";
+            this.CountItems.ReadOnly = true;
             // 
             // cmRghitClick
             // 
@@ -193,6 +202,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مدیریت حواله جات";
+            this.Load += new System.EventHandler(this.Remittances_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgOrder)).EndInit();
             this.ResumeLayout(false);
@@ -203,15 +213,15 @@ namespace WarehouseRemittance.App.Forms.Order
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CountItems;
         private System.Windows.Forms.ContextMenuStrip cmRghitClick;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CountItems;
     }
 }

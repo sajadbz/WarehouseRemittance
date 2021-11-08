@@ -1,6 +1,6 @@
 ﻿namespace WarehouseRemittance.App.Forms.Order
 {
-    partial class frmAddOrEdit
+    partial class frmOrderAddOrEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grdProducts = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelItem = new System.Windows.Forms.Button();
             this.btnNewItem = new System.Windows.Forms.Button();
@@ -40,14 +40,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNameUser = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtIdOrder = new System.Windows.Forms.TextBox();
+            this.txtOrderCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.TextBox();
-            this.cbWareHouse = new System.Windows.Forms.ComboBox();
+            this.cboWareHouse = new System.Windows.Forms.ComboBox();
+            this.dtCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.cboUser = new System.Windows.Forms.ComboBox();
+            this.chkSent = new System.Windows.Forms.CheckBox();
+            this.chkReceived = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdProducts)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -55,7 +57,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.grdProducts);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel1);
@@ -66,16 +68,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // dataGridView1
+            // grdProducts
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 101);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(489, 358);
-            this.dataGridView1.TabIndex = 4;
+            this.grdProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdProducts.Location = new System.Drawing.Point(3, 126);
+            this.grdProducts.Name = "grdProducts";
+            this.grdProducts.RowHeadersWidth = 51;
+            this.grdProducts.RowTemplate.Height = 29;
+            this.grdProducts.Size = new System.Drawing.Size(489, 333);
+            this.grdProducts.TabIndex = 4;
             // 
             // panel2
             // 
@@ -110,6 +112,7 @@
             this.btnNewItem.Text = "کالا جدید";
             this.btnNewItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewItem.UseVisualStyleBackColor = true;
+            this.btnNewItem.Click += new System.EventHandler(this.btnNewItem_Click);
             // 
             // panel3
             // 
@@ -157,97 +160,128 @@
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "ثبت";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkReceived);
+            this.panel1.Controls.Add(this.chkSent);
+            this.panel1.Controls.Add(this.cboUser);
+            this.panel1.Controls.Add(this.dtCreateDate);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtNameUser);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtIdOrder);
+            this.panel1.Controls.Add(this.txtOrderCode);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtDate);
-            this.panel1.Controls.Add(this.cbWareHouse);
+            this.panel1.Controls.Add(this.cboWareHouse);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 22);
+            this.panel1.Location = new System.Drawing.Point(3, 18);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(489, 79);
+            this.panel1.Size = new System.Drawing.Size(489, 108);
             this.panel1.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(434, 43);
+            this.label4.Location = new System.Drawing.Point(442, 43);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 18);
+            this.label4.Size = new System.Drawing.Size(38, 14);
             this.label4.TabIndex = 26;
             this.label4.Text = "بنگاه :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(383, 11);
+            this.label3.Location = new System.Drawing.Point(402, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 18);
+            this.label3.Size = new System.Drawing.Size(78, 14);
             this.label3.TabIndex = 25;
             this.label3.Text = "تحویل گیرنده :";
-            // 
-            // txtNameUser
-            // 
-            this.txtNameUser.Location = new System.Drawing.Point(221, 8);
-            this.txtNameUser.Name = "txtNameUser";
-            this.txtNameUser.Size = new System.Drawing.Size(156, 26);
-            this.txtNameUser.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 43);
+            this.label2.Location = new System.Drawing.Point(152, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 18);
+            this.label2.Size = new System.Drawing.Size(78, 14);
             this.label2.TabIndex = 23;
             this.label2.Text = "شماره حواله :";
             // 
-            // txtIdOrder
+            // txtOrderCode
             // 
-            this.txtIdOrder.Location = new System.Drawing.Point(3, 40);
-            this.txtIdOrder.Name = "txtIdOrder";
-            this.txtIdOrder.Size = new System.Drawing.Size(90, 26);
-            this.txtIdOrder.TabIndex = 22;
+            this.txtOrderCode.Enabled = false;
+            this.txtOrderCode.Location = new System.Drawing.Point(7, 40);
+            this.txtOrderCode.Name = "txtOrderCode";
+            this.txtOrderCode.Size = new System.Drawing.Size(139, 22);
+            this.txtOrderCode.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 12);
+            this.label1.Location = new System.Drawing.Point(193, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 18);
+            this.label1.Size = new System.Drawing.Size(37, 14);
             this.label1.TabIndex = 21;
             this.label1.Text = "تاریخ :";
             // 
-            // txtDate
+            // cboWareHouse
             // 
-            this.txtDate.Location = new System.Drawing.Point(3, 8);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(90, 26);
-            this.txtDate.TabIndex = 20;
+            this.cboWareHouse.DisplayMember = "Name";
+            this.cboWareHouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWareHouse.FormattingEnabled = true;
+            this.cboWareHouse.Location = new System.Drawing.Point(236, 40);
+            this.cboWareHouse.Name = "cboWareHouse";
+            this.cboWareHouse.Size = new System.Drawing.Size(191, 22);
+            this.cboWareHouse.TabIndex = 19;
+            this.cboWareHouse.ValueMember = "Id";
             // 
-            // cbWareHouse
+            // dtCreateDate
             // 
-            this.cbWareHouse.FormattingEnabled = true;
-            this.cbWareHouse.Location = new System.Drawing.Point(221, 40);
-            this.cbWareHouse.Name = "cbWareHouse";
-            this.cbWareHouse.Size = new System.Drawing.Size(206, 26);
-            this.cbWareHouse.TabIndex = 19;
+            this.dtCreateDate.Location = new System.Drawing.Point(7, 8);
+            this.dtCreateDate.Name = "dtCreateDate";
+            this.dtCreateDate.Size = new System.Drawing.Size(180, 22);
+            this.dtCreateDate.TabIndex = 27;
             // 
-            // frmAddOrEdit
+            // cboUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.cboUser.DisplayMember = "Name";
+            this.cboUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUser.FormattingEnabled = true;
+            this.cboUser.Location = new System.Drawing.Point(236, 11);
+            this.cboUser.Name = "cboUser";
+            this.cboUser.Size = new System.Drawing.Size(160, 22);
+            this.cboUser.TabIndex = 28;
+            this.cboUser.ValueMember = "Id";
+            // 
+            // chkSent
+            // 
+            this.chkSent.AutoSize = true;
+            this.chkSent.Location = new System.Drawing.Point(324, 74);
+            this.chkSent.Name = "chkSent";
+            this.chkSent.Size = new System.Drawing.Size(156, 18);
+            this.chkSent.TabIndex = 29;
+            this.chkSent.Text = "محصول ارسال شده است";
+            this.chkSent.UseVisualStyleBackColor = true;
+            // 
+            // chkReceived
+            // 
+            this.chkReceived.AutoSize = true;
+            this.chkReceived.Location = new System.Drawing.Point(162, 74);
+            this.chkReceived.Name = "chkReceived";
+            this.chkReceived.Size = new System.Drawing.Size(153, 18);
+            this.chkReceived.TabIndex = 30;
+            this.chkReceived.Text = "محصول تحویل شده است";
+            this.chkReceived.UseVisualStyleBackColor = true;
+            // 
+            // frmOrderAddOrEdit
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 573);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmAddOrEdit";
+            this.Name = "frmOrderAddOrEdit";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
@@ -255,7 +289,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmAddOrEdit_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdProducts)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -275,14 +309,16 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDelItem;
         private System.Windows.Forms.Button btnNewItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grdProducts;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNameUser;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtIdOrder;
+        private System.Windows.Forms.TextBox txtOrderCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDate;
-        private System.Windows.Forms.ComboBox cbWareHouse;
+        private System.Windows.Forms.ComboBox cboWareHouse;
+        private System.Windows.Forms.ComboBox cboUser;
+        private System.Windows.Forms.DateTimePicker dtCreateDate;
+        private System.Windows.Forms.CheckBox chkReceived;
+        private System.Windows.Forms.CheckBox chkSent;
     }
 }

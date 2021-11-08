@@ -11,10 +11,12 @@ namespace WarehouseRemittance.Domain.Entities.RemittanceOrder
 {
     public class Order : BaseEntity<long>
     {
-        
+
+        public long OrderCode { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsSent { get; set; }
         public bool IsReceived { get; set; }
+        public bool IsDelete { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; }

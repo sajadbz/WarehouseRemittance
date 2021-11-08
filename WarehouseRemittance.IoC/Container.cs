@@ -28,8 +28,9 @@ namespace WarehouseRemittance.IoC
             services
                 .AddTransient<IWarehouseService, WarehouseService>()
                 .AddTransient<IProductGroupService, ProductGroupService>()
-            .AddTransient<IProductService, ProductService>()
-            .AddTransient<IUserService, UserService>();
+                .AddTransient<IProductService, ProductService>()
+                .AddTransient<IUserService, UserService>()
+                .AddTransient<IOrderService, OrderService>();
 
         }
     }

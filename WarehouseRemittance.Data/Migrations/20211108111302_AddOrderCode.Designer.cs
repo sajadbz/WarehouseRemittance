@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WarehouseRemittance.Data.Context;
 
 namespace WarehouseRemittance.Data.Migrations
 {
     [DbContext(typeof(WarehouseRemittanceContext))]
-    partial class WarehouseRemittanceContextModelSnapshot : ModelSnapshot
+    [Migration("20211108111302_AddOrderCode")]
+    partial class AddOrderCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,17 +90,14 @@ namespace WarehouseRemittance.Data.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsReceived")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsSent")
                         .HasColumnType("bit");
 
-                    b.Property<long>("OrderCode")
-                        .HasColumnType("bigint");
+                    b.Property<int>("OrderCode")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

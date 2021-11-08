@@ -43,6 +43,8 @@ namespace WarehouseRemittance.Data.Context
                     new ProductGroup{Id = 2, Name = "استارباند و آرازیم و شارک"},
                     new ProductGroup{Id = 3, Name = "چسب های نواری و کاغذی"},
                 });
+
+            modelBuilder.Entity<Order>().HasQueryFilter(c => !c.IsDelete);
         }
     }
 }

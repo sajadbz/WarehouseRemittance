@@ -15,13 +15,16 @@ namespace WarehouseRemittance.App
         }
 
         private void btnRemittance_Click(object sender, EventArgs e)
-        {
-            new Remittances().ShowDialog();
+        {            
+            var frm = Program.ServiceProvider.GetService<Remittances>();
+            frm.ShowDialog();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            new Reports().ShowDialog();
+            var frm = Program.ServiceProvider.GetService<Reports>();
+            frm.ShowDialog();
+            
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
