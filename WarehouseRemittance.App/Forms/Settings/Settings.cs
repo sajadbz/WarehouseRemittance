@@ -1,14 +1,6 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
-using WarehouseRemittance.Core.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WarehouseRemittance.App.Forms.Settings
 {
@@ -22,29 +14,32 @@ namespace WarehouseRemittance.App.Forms.Settings
 
         private void btnProductGroups_Click(object sender, EventArgs e)
         {
-            new frmProductGroups().ShowDialog();
+            var frm = Program.ServiceProvider.GetService<frmProductGroups>();
+            frm.ShowDialog();
         }
 
         private void btnWarehouseGroups_Click(object sender, EventArgs e)
         {
-            new frmWarehouseGroups().ShowDialog();
+            var frm = Program.ServiceProvider.GetService<frmWarehouseGroups>();
+            frm.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUsers_Click(object sender, EventArgs e)
         {
-            new frmUsers().ShowDialog();
+            var frm = Program.ServiceProvider.GetService<frmUsers>();
+            frm.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnProduct_Click(object sender, EventArgs e)
         {
-            // new frmProduct(new ProductService(),new ProductGroupService()).ShowDialog();
             var frm = Program.ServiceProvider.GetService<frmProduct>();
             frm.ShowDialog();
         }
+
     }
 }

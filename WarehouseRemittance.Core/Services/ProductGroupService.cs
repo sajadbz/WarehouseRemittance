@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WarehouseRemittance.Core.Dtos.Products;
 using WarehouseRemittance.Data.Context;
 using WarehouseRemittance.Domain.Entities.Products;
@@ -18,7 +15,8 @@ namespace WarehouseRemittance.Core.Services
         ProductGroupDto Find(int groupId);
         void Delete(int groupId);
     }
-    public class ProductGroupService: IProductGroupService
+
+    public class ProductGroupService : IProductGroupService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
 

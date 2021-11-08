@@ -31,9 +31,9 @@ namespace WarehouseRemittance.App.Forms.Settings
         {
             this.btnProductGroups = new System.Windows.Forms.Button();
             this.btnWarehouseGroups = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnProductGroups
@@ -62,53 +62,53 @@ namespace WarehouseRemittance.App.Forms.Settings
             this.btnWarehouseGroups.UseVisualStyleBackColor = true;
             this.btnWarehouseGroups.Click += new System.EventHandler(this.btnWarehouseGroups_Click);
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Image = global::WarehouseRemittance.App.Properties.Resources.Collapse;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(303, 100);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "برگشت";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnExit.Image = global::WarehouseRemittance.App.Properties.Resources.Collapse;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(12, 438);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(303, 100);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.Text = "برگشت";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // button2
+            // btnUsers
             // 
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Image = global::WarehouseRemittance.App.Properties.Resources.User_3;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 226);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(303, 100);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "گروه اشخاص";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnUsers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUsers.Image = global::WarehouseRemittance.App.Properties.Resources.User_3;
+            this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsers.Location = new System.Drawing.Point(12, 226);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(303, 100);
+            this.btnUsers.TabIndex = 3;
+            this.btnUsers.Text = "گروه اشخاص";
+            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
-            // button3
+            // btnProduct
             // 
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Image = global::WarehouseRemittance.App.Properties.Resources.icons8_product_96;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(12, 332);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(303, 100);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "کالا";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnProduct.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnProduct.Image = global::WarehouseRemittance.App.Properties.Resources.icons8_product_96;
+            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduct.Location = new System.Drawing.Point(12, 332);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(303, 100);
+            this.btnProduct.TabIndex = 4;
+            this.btnProduct.Text = "کالا";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 553);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnProduct);
+            this.Controls.Add(this.btnUsers);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnWarehouseGroups);
             this.Controls.Add(this.btnProductGroups);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -128,8 +128,8 @@ namespace WarehouseRemittance.App.Forms.Settings
 
         private System.Windows.Forms.Button btnProductGroups;
         private System.Windows.Forms.Button btnWarehouseGroups;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnProduct;
     }
 }

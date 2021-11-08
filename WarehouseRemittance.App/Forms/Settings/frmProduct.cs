@@ -11,7 +11,8 @@ namespace WarehouseRemittance.App.Forms.Settings
         private readonly IProductService _productService;
         private readonly IProductGroupService _productGroupService;
         private static long _currentProductId = 0;
-        public frmProduct(IProductService productService, IProductGroupService productGroupService)
+
+        public frmProduct(IProductService productService,IProductGroupService productGroupService)
         {
             InitializeComponent();
             _productService = productService;
@@ -48,7 +49,7 @@ namespace WarehouseRemittance.App.Forms.Settings
                 _productService.Add(groupId, txtName.Text);
             else
                 _productService.Update(_currentProductId, groupId, txtName.Text);
-            
+
             Clear();
             LoadGrid();
         }
@@ -114,7 +115,5 @@ namespace WarehouseRemittance.App.Forms.Settings
             cbProductGroups.DataSource = _productGroupService.GetAll();
         }
         #endregion
-
-
     }
 }

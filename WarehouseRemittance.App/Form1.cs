@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using WarehouseRemittance.App.Forms;
 using WarehouseRemittance.App.Forms.Order;
 using WarehouseRemittance.App.Forms.Settings;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WarehouseRemittance.App
 {
@@ -25,7 +26,8 @@ namespace WarehouseRemittance.App
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            new Settings().ShowDialog();
+            var frm = Program.ServiceProvider.GetService<Settings>();
+            frm.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

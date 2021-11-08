@@ -26,8 +26,11 @@ namespace WarehouseRemittance.IoC
         private static void ConfigureServices(ServiceCollection services)
         {
             services
-                .AddTransient<IProductService, ProductService>()
-                .AddTransient<IProductGroupService, ProductGroupService>();
+                .AddTransient<IWarehouseService, WarehouseService>()
+                .AddTransient<IProductGroupService, ProductGroupService>()
+            .AddTransient<IProductService, ProductService>()
+            .AddTransient<IUserService, UserService>();
+
         }
     }
 }

@@ -21,21 +21,19 @@ namespace WarehouseRemittance.App
             Application.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
-            
+
             services.AddScoped<Form1>();
             services.AddScoped<frmProduct>();
             services.AddScoped<frmUsers>();
             services.AddScoped<frmProductGroups>();
+            services.AddScoped<frmWarehouseGroups>();
             services.AddScoped<Settings>();
-            
-            IoC.Container container = new IoC.Container();            
+
+            IoC.Container container = new IoC.Container();
             ServiceProvider = container.Register(services);
 
-
-            
             Application.Run(ServiceProvider.GetService<Form1>());
 
-            //Application.Run(new Form1());
         }
     }
 }

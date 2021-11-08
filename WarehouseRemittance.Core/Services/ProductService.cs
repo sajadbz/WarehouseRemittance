@@ -14,8 +14,8 @@ namespace WarehouseRemittance.Core.Services
         List<ProductDto> GetAll();
         List<ProductDto> GetAll(string search);
         long Add(int gId, string name);
-        void Update(long pId, int gId, string name);
-        void Delete(long pId);
+        public void Update(long pId, int gId, string name);
+        public void Delete(long pId);
     }
     public class ProductService : IProductService
     {

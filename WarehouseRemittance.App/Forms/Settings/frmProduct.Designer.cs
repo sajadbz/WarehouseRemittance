@@ -65,11 +65,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cbProductGroups);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 249);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(0, 332);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(442, 84);
+            this.groupBox1.Size = new System.Drawing.Size(505, 112);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "افزودن کالا";
@@ -77,26 +75,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(211, 22);
+            this.label2.Location = new System.Drawing.Point(241, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 15);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "گروه کالا :";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(271, 44);
-            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtName.Location = new System.Drawing.Point(310, 59);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(165, 23);
+            this.txtName.Size = new System.Drawing.Size(188, 27);
             this.txtName.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(390, 22);
+            this.label1.Location = new System.Drawing.Point(446, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "نام کالا :";
             // 
@@ -105,10 +102,9 @@
             this.cbProductGroups.DisplayMember = "Name";
             this.cbProductGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProductGroups.FormattingEnabled = true;
-            this.cbProductGroups.Location = new System.Drawing.Point(10, 44);
-            this.cbProductGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbProductGroups.Location = new System.Drawing.Point(11, 59);
             this.cbProductGroups.Name = "cbProductGroups";
-            this.cbProductGroups.Size = new System.Drawing.Size(255, 23);
+            this.cbProductGroups.Size = new System.Drawing.Size(291, 28);
             this.cbProductGroups.TabIndex = 0;
             this.cbProductGroups.ValueMember = "Id";
             // 
@@ -118,11 +114,9 @@
             this.groupBox2.Controls.Add(this.btnCansel);
             this.groupBox2.Controls.Add(this.btnSaveOrEdit);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 333);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(0, 444);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(442, 50);
+            this.groupBox2.Size = new System.Drawing.Size(505, 67);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -130,10 +124,9 @@
             // 
             this.btnExit.Image = global::WarehouseRemittance.App.Properties.Resources.Collapse1;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(5, 11);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Location = new System.Drawing.Point(6, 15);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(140, 34);
+            this.btnExit.Size = new System.Drawing.Size(160, 45);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "خروج";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -143,10 +136,9 @@
             // 
             this.btnCansel.Image = global::WarehouseRemittance.App.Properties.Resources.Save_2_Stop;
             this.btnCansel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCansel.Location = new System.Drawing.Point(150, 11);
-            this.btnCansel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCansel.Location = new System.Drawing.Point(171, 15);
             this.btnCansel.Name = "btnCansel";
-            this.btnCansel.Size = new System.Drawing.Size(140, 34);
+            this.btnCansel.Size = new System.Drawing.Size(160, 45);
             this.btnCansel.TabIndex = 12;
             this.btnCansel.Text = "انصراف";
             this.btnCansel.UseVisualStyleBackColor = true;
@@ -157,10 +149,9 @@
             // 
             this.btnSaveOrEdit.Image = global::WarehouseRemittance.App.Properties.Resources.Save_2;
             this.btnSaveOrEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveOrEdit.Location = new System.Drawing.Point(296, 11);
-            this.btnSaveOrEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveOrEdit.Location = new System.Drawing.Point(338, 15);
             this.btnSaveOrEdit.Name = "btnSaveOrEdit";
-            this.btnSaveOrEdit.Size = new System.Drawing.Size(140, 34);
+            this.btnSaveOrEdit.Size = new System.Drawing.Size(160, 45);
             this.btnSaveOrEdit.TabIndex = 11;
             this.btnSaveOrEdit.Text = "ثبت";
             this.btnSaveOrEdit.UseVisualStyleBackColor = true;
@@ -171,6 +162,8 @@
             this.dgList.AllowUserToAddRows = false;
             this.dgList.AllowUserToDeleteRows = false;
             this.dgList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdProduct,
@@ -179,8 +172,7 @@
             this.IdGroupProduct});
             this.dgList.ContextMenuStrip = this.cmRightClick;
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgList.Location = new System.Drawing.Point(0, 53);
-            this.dgList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgList.Location = new System.Drawing.Point(0, 71);
             this.dgList.MultiSelect = false;
             this.dgList.Name = "dgList";
             this.dgList.ReadOnly = true;
@@ -188,7 +180,7 @@
             this.dgList.RowHeadersWidth = 51;
             this.dgList.RowTemplate.Height = 29;
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgList.Size = new System.Drawing.Size(442, 196);
+            this.dgList.Size = new System.Drawing.Size(505, 261);
             this.dgList.TabIndex = 0;
             // 
             // IdProduct
@@ -235,19 +227,19 @@
             this.cmDelete});
             this.cmRightClick.Name = "cmRightClick";
             this.cmRightClick.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmRightClick.Size = new System.Drawing.Size(111, 48);
+            this.cmRightClick.Size = new System.Drawing.Size(125, 52);
             // 
             // cmEdit
             // 
             this.cmEdit.Name = "cmEdit";
-            this.cmEdit.Size = new System.Drawing.Size(110, 22);
+            this.cmEdit.Size = new System.Drawing.Size(124, 24);
             this.cmEdit.Text = "ویرایش";
             this.cmEdit.Click += new System.EventHandler(this.cmEdit_Click);
             // 
             // cmDelete
             // 
             this.cmDelete.Name = "cmDelete";
-            this.cmDelete.Size = new System.Drawing.Size(110, 22);
+            this.cmDelete.Size = new System.Drawing.Size(124, 24);
             this.cmDelete.Text = "حذف";
             this.cmDelete.Click += new System.EventHandler(this.cmDelete_Click);
             // 
@@ -257,26 +249,27 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(442, 53);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(505, 71);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(10, 21);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Location = new System.Drawing.Point(11, 28);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(369, 23);
+            this.txtSearch.Size = new System.Drawing.Size(421, 27);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 23);
+            this.label3.Location = new System.Drawing.Point(440, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 15);
+            this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "جستجو :";
             // 
@@ -286,15 +279,14 @@
             // 
             // frmProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 383);
+            this.ClientSize = new System.Drawing.Size(505, 511);
             this.Controls.Add(this.dgList);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmProduct";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;

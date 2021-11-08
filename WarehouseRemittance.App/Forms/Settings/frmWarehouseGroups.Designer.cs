@@ -49,10 +49,14 @@ namespace WarehouseRemittance.App.Forms
             this.NameWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddressWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmRightClick.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmRightClick
@@ -86,8 +90,8 @@ namespace WarehouseRemittance.App.Forms
             this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 384);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(538, 112);
             this.groupBox1.TabIndex = 1;
@@ -195,6 +199,9 @@ namespace WarehouseRemittance.App.Forms
             // dgList
             // 
             this.dgList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdWH,
@@ -203,13 +210,13 @@ namespace WarehouseRemittance.App.Forms
             this.AddressWH});
             this.dgList.ContextMenuStrip = this.cmRightClick;
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgList.Location = new System.Drawing.Point(0, 112);
+            this.dgList.Location = new System.Drawing.Point(0, 43);
             this.dgList.MultiSelect = false;
             this.dgList.Name = "dgList";
             this.dgList.RowHeadersVisible = false;
             this.dgList.RowHeadersWidth = 51;
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgList.Size = new System.Drawing.Size(538, 384);
+            this.dgList.Size = new System.Drawing.Size(538, 341);
             this.dgList.TabIndex = 10;
             // 
             // IdWH
@@ -244,14 +251,42 @@ namespace WarehouseRemittance.App.Forms
             this.AddressWH.MinimumWidth = 6;
             this.AddressWH.Name = "AddressWH";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(538, 43);
+            this.panel1.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(464, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 18);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "جستجو :";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(18, 9);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(440, 26);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // frmWarehouseGroups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 565);
             this.Controls.Add(this.dgList);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmWarehouseGroups";
@@ -267,6 +302,8 @@ namespace WarehouseRemittance.App.Forms
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +328,8 @@ namespace WarehouseRemittance.App.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn NameWH;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneWH;
         private System.Windows.Forms.DataGridViewTextBoxColumn AddressWH;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
