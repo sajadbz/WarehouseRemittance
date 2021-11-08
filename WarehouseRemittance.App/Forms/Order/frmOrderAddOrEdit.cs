@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseRemittance.Core.Dtos.RemittanceOrder;
-using WarehouseRemittance.Core.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 using WarehouseRemittance.Core.Services;
-using WarehouseRemittance.Core.Utility;
 
 namespace WarehouseRemittance.App.Forms.Order
 {
@@ -51,20 +43,10 @@ namespace WarehouseRemittance.App.Forms.Order
             }
         }
 
-        private void LoadComboBox()
-        {
-            cboUser.DataSource = _userService.GetAll();
-            cboWareHouse.DataSource = _warehouseService.GetAll();
-        }
-        private void LoadGrid()
-        {
-            grdProducts.AutoGenerateColumns = false;
-            grdProducts.DataSource = null;
-        }
-
         private void btnNewItem_Click(object sender, EventArgs e)
         {
-
+            var frm = Program.ServiceProvider.GetService<frmAddItemOrder>();
+            frm.ShowDialog();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -77,12 +59,25 @@ namespace WarehouseRemittance.App.Forms.Order
                     IsReceived = chkReceived.Checked,
                     IsSent = chkSent.Checked,
                     UserId = (int)cboUser.SelectedValue,
-                    WarehouseId = (int) cboWareHouse.SelectedValue,                    
+                    WarehouseId = (int) cboWareHouse.SelectedValue,
                 };
                 _orderService.Add(dto);
             }
 
             DialogResult = DialogResult.OK;
         }
+        #region Costum Methods
+        private void LoadComboBox()
+        {
+            cboUser.DataSource = _userService.GetAll();
+            cboWareHouse.DataSource = _warehouseService.GetAll();
+        }
+        private void LoadGrid()
+        {
+            dgListProducts.AutoGenerateColumns = false;
+            dgListProducts.DataSource = _orderService.GetAll();
+        }
+
+        #endregion
     }
 }

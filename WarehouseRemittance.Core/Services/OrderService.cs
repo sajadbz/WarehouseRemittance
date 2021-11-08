@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WarehouseRemittance.Core.Dtos.Products;
 using WarehouseRemittance.Core.Dtos.RemittanceOrder;
-using WarehouseRemittance.Core.Utility;
 using WarehouseRemittance.Data.Context;
-using WarehouseRemittance.Domain.Entities.Products;
 using WarehouseRemittance.Domain.Entities.RemittanceOrder;
 
 namespace WarehouseRemittance.Core.Services
@@ -15,6 +14,7 @@ namespace WarehouseRemittance.Core.Services
         OrderDto Find(long orderId);
         List<OrderDto> GetAll();
         List<OrderDto> GetAll(long code);
+        long AddDetail(OrderDetailDto dto);
         long Add(OrderDto dto);
         public void Update(OrderDto dto);
         public void Delete(long orderId);
@@ -22,6 +22,7 @@ namespace WarehouseRemittance.Core.Services
     public class OrderService : IOrderService
     {
         WarehouseRemittanceContext _context = new WarehouseRemittanceContext();
+
         public List<OrderDto> GetAll()
         {
             return _context.Orders
@@ -42,6 +43,22 @@ namespace WarehouseRemittance.Core.Services
                 .Select(c => c.ToDto())
                 .ToList();
         }
+        public long AddDetail( OrderDetailDto dto )
+        {
+            OrderDetail orderDetail = new OrderDetail
+            {
+                ProductId = dto.ProductId,
+                Count = dto.Count,
+                //OrderId = dto.OrderId,
+               
+            };
+
+            _context.OrderDetails.Add(orderDetail);
+            _context.SaveChanges();
+
+            return orderDetail.Id;
+
+        }
         public long Add(OrderDto dto)
         {
             long defaultCode = 1000;
@@ -58,9 +75,8 @@ namespace WarehouseRemittance.Core.Services
                 IsReceived = false,
                 IsSent = false,
             };
-            _context.Orders.Add(order);
-            _context.SaveChanges();
-            if (dto.OrderDetails?.Count > 0)
+            
+            if (dto.OrderDetails?.Count == 0)
             {
                 foreach (var item in dto.OrderDetails)
                 {
@@ -72,8 +88,11 @@ namespace WarehouseRemittance.Core.Services
                     };
                     _context.OrderDetails.Add(detail);
                 }
+                
+                _context.Orders.Add(order);
                 _context.SaveChanges();
             }
+                           
                 
             return order.Id;
         }
