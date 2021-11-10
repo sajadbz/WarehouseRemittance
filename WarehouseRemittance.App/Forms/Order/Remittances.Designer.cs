@@ -37,6 +37,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgOrder = new System.Windows.Forms.DataGridView();
+            this.OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +97,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.btnDelete.Text = "حذف";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -108,6 +110,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.btnEdit.Text = "ویرایش";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -130,6 +133,7 @@ namespace WarehouseRemittance.App.Forms.Order
             this.dgOrder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrderId,
             this.IdOrder,
             this.User,
             this.DataOrder,
@@ -143,8 +147,17 @@ namespace WarehouseRemittance.App.Forms.Order
             this.dgOrder.RowHeadersVisible = false;
             this.dgOrder.RowHeadersWidth = 51;
             this.dgOrder.RowTemplate.Height = 29;
+            this.dgOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgOrder.Size = new System.Drawing.Size(663, 314);
             this.dgOrder.TabIndex = 3;
+            // 
+            // OrderId
+            // 
+            this.OrderId.DataPropertyName = "Id";
+            this.OrderId.HeaderText = "OrderId";
+            this.OrderId.Name = "OrderId";
+            this.OrderId.ReadOnly = true;
+            this.OrderId.Visible = false;
             // 
             // IdOrder
             // 
@@ -219,6 +232,7 @@ namespace WarehouseRemittance.App.Forms.Order
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataOrder;

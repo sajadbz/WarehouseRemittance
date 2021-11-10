@@ -18,6 +18,8 @@ namespace WarehouseRemittance.Core.Services
         long Add(OrderDto dto);
         public void Update(OrderDto dto);
         public void Delete(long orderId);
+        public void DeleteProduct(long orderDetailId);
+        List<OrderDetailDto> GetOrderDetails(long orderId);
     }
     public class OrderService : IOrderService
     {
@@ -43,14 +45,19 @@ namespace WarehouseRemittance.Core.Services
                 .Select(c => c.ToDto())
                 .ToList();
         }
-        public long AddDetail( OrderDetailDto dto )
+        //public OrderDto getOrderId(long code)
+        //{
+        //    return (OrderDto)_context.Orders
+        //        .Select(c => c.ToDtoId());
+        //}
+        public long AddDetail(OrderDetailDto dto)
         {
             OrderDetail orderDetail = new OrderDetail
             {
                 ProductId = dto.ProductId,
                 Count = dto.Count,
                 //OrderId = dto.OrderId,
-               
+
             };
 
             _context.OrderDetails.Add(orderDetail);
@@ -75,42 +82,72 @@ namespace WarehouseRemittance.Core.Services
                 IsReceived = false,
                 IsSent = false,
             };
-            
-            if (dto.OrderDetails?.Count == 0)
+            _context.Add(order);
+            _context.SaveChanges();
+
+            if (dto.OrderDetails?.Count > 0)
             {
                 foreach (var item in dto.OrderDetails)
                 {
-                    OrderDetail detail = new OrderDetail
+                    _context.OrderDetails.Add(new OrderDetail
                     {
                         OrderId = order.Id,
                         ProductId = item.ProductId,
                         Count = item.Count
-                    };
-                    _context.OrderDetails.Add(detail);
+                    });
                 }
-                
-                _context.Orders.Add(order);
                 _context.SaveChanges();
             }
-                           
-                
+
+
             return order.Id;
         }
         public void Update(OrderDto dto)
-        {
-            //TODO: Update Order ...
+        {            
             var order = _context.Orders.Find(dto.Id);
+            order.UserId = dto.UserId;
+            order.WarehouseId = dto.WarehouseId;
+            //order.CreateDate = dto.CreateDate;
             order.IsReceived = dto.IsReceived;
             order.IsSent = dto.IsSent;
-            //_context.Orders.Update(order);
-            //_context.SaveChanges();
+            _context.Orders.Update(order);
+            _context.SaveChanges();
+
+            if (_context.OrderDetails.Any(c => c.OrderId == dto.Id))
+            {
+                _context.OrderDetails.RemoveRange(_context.OrderDetails.Where(c => c.OrderId == dto.Id));
+                _context.SaveChanges();
+            }
+
+            if (dto.OrderDetails?.Count > 0)
+            {
+                foreach (var item in dto.OrderDetails)
+                {
+                    if (item.ProductId != order.Id) 
+                    _context.OrderDetails.Update(new OrderDetail
+                    {
+                        OrderId = order.Id,
+                        ProductId = item.ProductId,
+                        Count = item.Count
+                    });
+                }
+                _context.SaveChanges();
+            }
+            
         }
         public void Delete(long orderId)
         {
             var order = _context.Orders.Find(orderId);
-            order.IsDelete = true;
+            _context.Remove(order);
+            //order.IsDelete = true;
             _context.SaveChanges();
         }
+        public void DeleteProduct(long orderDetailId)
+        {
+            var order = _context.OrderDetails.Find(orderDetailId);
+            _context.RemoveRange(order);
+            //_context.SaveChanges();
+        } 
         public OrderDto Find(long orderId)
         {
             var order = _context.Orders
@@ -119,6 +156,13 @@ namespace WarehouseRemittance.Core.Services
                 .Single(c => c.Id == orderId);
             return order.ToDto();
         }
-
+        public List<OrderDetailDto> GetOrderDetails(long orderId)
+        {
+            return _context.OrderDetails
+                .Include(c => c.Product)
+                .Where(c => c.OrderId == orderId)
+                .Select(c => c.ToDto())
+                .ToList();
+        }
     }
 }

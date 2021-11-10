@@ -38,8 +38,16 @@ namespace WarehouseRemittance.Core.Dtos.RemittanceOrder
                 OrderId = o.OrderId,
                 Count = o.Count,
                 ProductId = o.ProductId,
+                ProductName = o.Product.Name,
                 Product = o.Product?.ToDto()
             };
         }
+        //public static OrderDto ToDtoId (this Order o)
+        //{
+        //    return new OrderDto
+        //    {
+        //        OrderCode = o.OrderCode,
+        //    };
+        //}
     }
 }
