@@ -8,6 +8,7 @@ namespace WarehouseRemittance.Core.Dtos.RemittanceOrder
         public int Count { get; set; }
 
         public long ProductId { get; set; }
+        public string ProductName { get; set; }
         public ProductDto Product { get; set; }
 
         public long OrderId { get; set; }

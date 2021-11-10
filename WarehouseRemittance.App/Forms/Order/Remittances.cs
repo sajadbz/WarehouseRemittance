@@ -15,15 +15,16 @@ namespace WarehouseRemittance.App.Forms.Order
         }
 
         private void btnExit_Click(object sender, EventArgs e)
-        {            
-            this.Close();            
+        {
+            this.Close();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {            
+        {
             var frm = Program.ServiceProvider.GetService<frmOrderAddOrEdit>();
-            if(frm.ShowDialog() == DialogResult.OK)
-                LoadGrid(); 
+            frm.OrderId = 0;
+            if (frm.ShowDialog() == DialogResult.OK)
+                LoadGrid();
 
         }
 
@@ -36,6 +37,19 @@ namespace WarehouseRemittance.App.Forms.Order
         {
             dgOrder.AutoGenerateColumns = false;
             dgOrder.DataSource = _orderService.GetAll();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgOrder.RowCount > 0 && dgOrder.SelectedRows.Count == 1)
+            {
+                long orderId = (long) dgOrder.SelectedRows[0].Cells[0].Value;
+                var frm = Program.ServiceProvider.GetService<frmOrderAddOrEdit>();
+                frm.OrderId = orderId;
+                if (frm.ShowDialog() == DialogResult.OK)
+                    LoadGrid();
+            }
+            
         }
     }
 }

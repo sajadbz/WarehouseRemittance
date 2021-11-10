@@ -31,7 +31,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgListProducts = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnNewItem = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtProductCount = new System.Windows.Forms.TextBox();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboProducts = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCansel = new System.Windows.Forms.Button();
@@ -94,25 +98,65 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnNewItem);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.txtProductCount);
+            this.panel2.Controls.Add(this.btnAddProduct);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.cboProducts);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(3, 459);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(494, 61);
             this.panel2.TabIndex = 3;
             // 
-            // btnNewItem
+            // label5
             // 
-            this.btnNewItem.Image = global::WarehouseRemittance.App.Properties.Resources.plus___480px;
-            this.btnNewItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewItem.Location = new System.Drawing.Point(197, 6);
-            this.btnNewItem.Name = "btnNewItem";
-            this.btnNewItem.Size = new System.Drawing.Size(100, 49);
-            this.btnNewItem.TabIndex = 14;
-            this.btnNewItem.Text = "کالا جدید";
-            this.btnNewItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNewItem.UseVisualStyleBackColor = true;
-            this.btnNewItem.Click += new System.EventHandler(this.btnNewItem_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(212, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 14);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "تعداد کالا :";
+            // 
+            // txtProductCount
+            // 
+            this.txtProductCount.Location = new System.Drawing.Point(113, 19);
+            this.txtProductCount.Name = "txtProductCount";
+            this.txtProductCount.Size = new System.Drawing.Size(93, 22);
+            this.txtProductCount.TabIndex = 8;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Image = global::WarehouseRemittance.App.Properties.Resources.Save_2;
+            this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnAddProduct.Location = new System.Drawing.Point(7, 10);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(102, 39);
+            this.btnAddProduct.TabIndex = 7;
+            this.btnAddProduct.Text = "افزودن";
+            this.btnAddProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(435, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 14);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "نام کالا :";
+            // 
+            // cboProducts
+            // 
+            this.cboProducts.DisplayMember = "Name";
+            this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducts.FormattingEnabled = true;
+            this.cboProducts.Location = new System.Drawing.Point(279, 19);
+            this.cboProducts.Name = "cboProducts";
+            this.cboProducts.Size = new System.Drawing.Size(151, 22);
+            this.cboProducts.TabIndex = 5;
+            this.cboProducts.ValueMember = "Id";
             // 
             // panel3
             // 
@@ -280,14 +324,14 @@
             // 
             // IdProduct
             // 
-            this.IdProduct.DataPropertyName = "NumberItem";
+            this.IdProduct.DataPropertyName = "ProductId";
             this.IdProduct.HeaderText = "کد محصول";
             this.IdProduct.Name = "IdProduct";
             this.IdProduct.ReadOnly = true;
             // 
             // NameProduct
             // 
-            this.NameProduct.DataPropertyName = "Name";
+            this.NameProduct.DataPropertyName = "ProductName";
             this.NameProduct.HeaderText = "نام کالا";
             this.NameProduct.Name = "NameProduct";
             this.NameProduct.ReadOnly = true;
@@ -317,6 +361,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListProducts)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -333,7 +378,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnNewItem;
         private System.Windows.Forms.DataGridView dgListProducts;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -345,6 +389,11 @@
         private System.Windows.Forms.DateTimePicker dtCreateDate;
         private System.Windows.Forms.CheckBox chkReceived;
         private System.Windows.Forms.CheckBox chkSent;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtProductCount;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboProducts;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn Count;
