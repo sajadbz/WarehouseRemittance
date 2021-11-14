@@ -9,7 +9,7 @@ namespace WarehouseRemittance.Core.Dtos.RemittanceOrder
     {
         public long Id { get; set; }
         public long OrderCode { get; set; }
-        public DateTime CreateDate { get; set; }
+        //public DateTime CreateDate { get; set; }
         public bool IsSent { get; set; }
         public bool IsReceived { get; set; }
 

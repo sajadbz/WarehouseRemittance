@@ -17,7 +17,7 @@ namespace WarehouseRemittance.Core.Dtos.RemittanceOrder
             return new OrderDto
             {
                 Id = o.Id,
-                CreateDate = o.CreateDate,
+                //CreateDate = o.CreateDate,
                 IsReceived = o.IsReceived,
                 IsSent = o.IsSent,
                 OrderCode = o.OrderCode,

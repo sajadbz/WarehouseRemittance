@@ -74,13 +74,13 @@ namespace WarehouseRemittance.Core.Services
 
             Order order = new Order
             {
-                OrderCode = defaultCode,
-                CreateDate = dto.CreateDate,
+                OrderCode = defaultCode,                
+                CreateDate = DateTime.Now,
                 UserId = dto.UserId,
                 WarehouseId = dto.WarehouseId,
                 IsDelete = false,
-                IsReceived = false,
-                IsSent = false,
+                IsReceived = dto.IsReceived,
+                IsSent = dto.IsSent,                
             };
             _context.Add(order);
             _context.SaveChanges();
@@ -128,7 +128,7 @@ namespace WarehouseRemittance.Core.Services
                     {
                         OrderId = order.Id,
                         ProductId = item.ProductId,
-                        Count = item.Count
+                        Count = item.Count                        
                     });
                 }
                 _context.SaveChanges();
@@ -137,12 +137,13 @@ namespace WarehouseRemittance.Core.Services
         }
         public void Delete(long orderId)
         {
-            //Where remove order, it must be soft deleted
+            //Why remove order? it must be soft delete
             var order = _context.Orders.Find(orderId);
             _context.Remove(order);
             //order.IsDelete = true;
             _context.SaveChanges();
         }
+
         // DeleteProduct is not a good name, it must be DeleteOrderDetail
         public void DeleteProduct(long orderDetailId)
         {

@@ -40,8 +40,7 @@ namespace WarehouseRemittance.App.Forms.Order
                 dtCreateDate.Text = DateTime.Now.ToString();
                 btnSave.Text = "ذخیره";
                 groupBox1.Text = "افزودن حواله";
-
-                LoadGrid();
+                LoadGrid();                
             }
             else
             {
@@ -103,12 +102,12 @@ namespace WarehouseRemittance.App.Forms.Order
         {
             var dto = new OrderDto
             {
-                CreateDate = DateTime.Parse(dtCreateDate.Text),
+                //CreateDate = DateTime.Parse(dtCreateDate.Text),
                 IsReceived = chkReceived.Checked,
                 IsSent = chkSent.Checked,
                 UserId = (int)cboUser.SelectedValue,
                 WarehouseId = (int)cboWareHouse.SelectedValue,
-                OrderDetails = _orderDetailDtos,
+                OrderDetails = _orderDetailDtos                
             };
             if (OrderId == 0)
             {
@@ -140,6 +139,13 @@ namespace WarehouseRemittance.App.Forms.Order
 
             if (orderId.HasValue)
             {
+                var order = _orderService.Find(orderId.Value);
+                txtOrderCode.Text = order.OrderCode.ToString();
+                cboUser.SelectedValue = order.UserId;
+                cboWareHouse.SelectedValue = order.WarehouseId;
+                chkReceived.Checked = order.IsReceived;
+                chkSent.Checked = order.IsSent;
+                
                 var orderDetails = _orderService.GetOrderDetails(orderId.Value);
                 source.DataSource = orderDetails;
                 dgListProducts.DataSource = source;
@@ -152,6 +158,9 @@ namespace WarehouseRemittance.App.Forms.Order
                 dgListProducts.DataSource = source;
                 // txtOrderCode.Text = Convert.ToString(_orderService.getOrderId(OrderId));
             }
+            txtProductCount.Text = "";
+            cboProducts.SelectedIndex = -1;
+
             dgListProducts.MouseDown += GeneralService.DataGridView_MouseDown;
         }
         private void DeleteListProduct(int orderId)

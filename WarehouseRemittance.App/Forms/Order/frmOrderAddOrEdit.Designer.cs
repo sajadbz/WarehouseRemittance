@@ -111,6 +111,7 @@
             this.OrderCode.HeaderText = "OrderId";
             this.OrderCode.Name = "OrderCode";
             this.OrderCode.ReadOnly = true;
+            this.OrderCode.Visible = false;
             // 
             // Id
             // 
@@ -118,6 +119,7 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // ProductId
             // 
