@@ -29,7 +29,6 @@ namespace WarehouseRemittance.App
             services.AddScoped<frmProductGroups>();
             services.AddScoped<frmWarehouseGroups>();
             services.AddScoped<Settings>();
-            services.AddScoped<frmAddItemOrder>();
             services.AddScoped<Remittances>();
             services.AddScoped<Reports>();
             services.AddScoped<frmOrderAddOrEdit>();

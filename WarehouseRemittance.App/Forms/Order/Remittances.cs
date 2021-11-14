@@ -33,12 +33,6 @@ namespace WarehouseRemittance.App.Forms.Order
             LoadGrid();
         }
 
-        private void LoadGrid()
-        {
-            dgOrder.AutoGenerateColumns = false;
-            dgOrder.DataSource = _orderService.GetAll();
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgOrder.RowCount > 0 && dgOrder.SelectedRows.Count == 1)
@@ -51,5 +45,19 @@ namespace WarehouseRemittance.App.Forms.Order
             }
             
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            _orderService.Delete(Convert.ToInt64(dgOrder.SelectedRows[0].Cells[0].Value));
+            LoadGrid();
+        }
+        #region Custom Methods
+
+        private void LoadGrid()
+        {
+            dgOrder.AutoGenerateColumns = false;
+            dgOrder.DataSource = _orderService.GetAll();
+        }
+        #endregion
     }
 }

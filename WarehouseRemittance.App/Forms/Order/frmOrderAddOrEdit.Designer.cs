@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgListProducts = new System.Windows.Forms.DataGridView();
+            this.OrderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProductCount = new System.Windows.Forms.TextBox();
@@ -51,11 +59,9 @@
             this.txtOrderCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboWareHouse = new System.Windows.Forms.ComboBox();
-            this.IdProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListProducts)).BeginInit();
+            this.cmRightClick.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,9 +88,12 @@
             this.dgListProducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgListProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgListProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdProduct,
-            this.NameProduct,
-            this.Count});
+            this.OrderCode,
+            this.Id,
+            this.ProductId,
+            this.ProductName,
+            this.ProductCount});
+            this.dgListProducts.ContextMenuStrip = this.cmRightClick;
             this.dgListProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgListProducts.Location = new System.Drawing.Point(3, 126);
             this.dgListProducts.Name = "dgListProducts";
@@ -93,8 +102,59 @@
             this.dgListProducts.RowHeadersWidth = 51;
             this.dgListProducts.RowTemplate.Height = 29;
             this.dgListProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgListProducts.Size = new System.Drawing.Size(494, 333);
+            this.dgListProducts.Size = new System.Drawing.Size(494, 353);
             this.dgListProducts.TabIndex = 4;
+            // 
+            // OrderCode
+            // 
+            this.OrderCode.DataPropertyName = "OrderId";
+            this.OrderCode.HeaderText = "OrderId";
+            this.OrderCode.Name = "OrderCode";
+            this.OrderCode.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // ProductId
+            // 
+            this.ProductId.DataPropertyName = "ProductId";
+            this.ProductId.HeaderText = "کد کالا";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "نام کالا";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductCount
+            // 
+            this.ProductCount.DataPropertyName = "Count";
+            this.ProductCount.HeaderText = "تعداد کالا";
+            this.ProductCount.Name = "ProductCount";
+            this.ProductCount.ReadOnly = true;
+            // 
+            // cmRightClick
+            // 
+            this.cmRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteProduct});
+            this.cmRightClick.Name = "cmRightClick";
+            this.cmRightClick.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmRightClick.ShowImageMargin = false;
+            this.cmRightClick.Size = new System.Drawing.Size(75, 26);
+            // 
+            // DeleteProduct
+            // 
+            this.DeleteProduct.Name = "DeleteProduct";
+            this.DeleteProduct.Size = new System.Drawing.Size(74, 22);
+            this.DeleteProduct.Text = "حذف";
+            this.DeleteProduct.Click += new System.EventHandler(this.DeleteProduct_Click);
             // 
             // panel2
             // 
@@ -104,15 +164,15 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.cboProducts);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 459);
+            this.panel2.Location = new System.Drawing.Point(3, 479);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(494, 61);
+            this.panel2.Size = new System.Drawing.Size(494, 41);
             this.panel2.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(212, 22);
+            this.label5.Location = new System.Drawing.Point(197, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 14);
             this.label5.TabIndex = 9;
@@ -120,18 +180,18 @@
             // 
             // txtProductCount
             // 
-            this.txtProductCount.Location = new System.Drawing.Point(113, 19);
+            this.txtProductCount.Location = new System.Drawing.Point(98, 11);
             this.txtProductCount.Name = "txtProductCount";
             this.txtProductCount.Size = new System.Drawing.Size(93, 22);
             this.txtProductCount.TabIndex = 8;
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Image = global::WarehouseRemittance.App.Properties.Resources.Save_2;
+            this.btnAddProduct.Image = global::WarehouseRemittance.App.Properties.Resources.Save_Add;
             this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnAddProduct.Location = new System.Drawing.Point(7, 10);
+            this.btnAddProduct.Location = new System.Drawing.Point(3, 6);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(102, 39);
+            this.btnAddProduct.Size = new System.Drawing.Size(79, 30);
             this.btnAddProduct.TabIndex = 7;
             this.btnAddProduct.Text = "افزودن";
             this.btnAddProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,7 +201,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(435, 22);
+            this.label6.Location = new System.Drawing.Point(435, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 14);
             this.label6.TabIndex = 6;
@@ -152,9 +212,9 @@
             this.cboProducts.DisplayMember = "Name";
             this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(279, 19);
+            this.cboProducts.Location = new System.Drawing.Point(264, 11);
             this.cboProducts.Name = "cboProducts";
-            this.cboProducts.Size = new System.Drawing.Size(151, 22);
+            this.cboProducts.Size = new System.Drawing.Size(174, 22);
             this.cboProducts.TabIndex = 5;
             this.cboProducts.ValueMember = "Id";
             // 
@@ -322,27 +382,6 @@
             this.cboWareHouse.TabIndex = 19;
             this.cboWareHouse.ValueMember = "Id";
             // 
-            // IdProduct
-            // 
-            this.IdProduct.DataPropertyName = "ProductId";
-            this.IdProduct.HeaderText = "کد محصول";
-            this.IdProduct.Name = "IdProduct";
-            this.IdProduct.ReadOnly = true;
-            // 
-            // NameProduct
-            // 
-            this.NameProduct.DataPropertyName = "ProductName";
-            this.NameProduct.HeaderText = "نام کالا";
-            this.NameProduct.Name = "NameProduct";
-            this.NameProduct.ReadOnly = true;
-            // 
-            // Count
-            // 
-            this.Count.DataPropertyName = "Count";
-            this.Count.HeaderText = "تعداد کارتن";
-            this.Count.Name = "Count";
-            this.Count.ReadOnly = true;
-            // 
             // frmOrderAddOrEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -360,6 +399,7 @@
             this.Load += new System.EventHandler(this.frmAddOrEdit_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListProducts)).EndInit();
+            this.cmRightClick.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -394,8 +434,12 @@
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboProducts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
+        private System.Windows.Forms.ContextMenuStrip cmRightClick;
+        private System.Windows.Forms.ToolStripMenuItem DeleteProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCount;
     }
 }

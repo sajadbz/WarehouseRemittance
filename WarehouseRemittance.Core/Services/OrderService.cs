@@ -18,6 +18,7 @@ namespace WarehouseRemittance.Core.Services
         long Add(OrderDto dto);
         public void Update(OrderDto dto);
         public void Delete(long orderId);
+        public void DeleteProduct(long orderDetailId);
         List<OrderDetailDto> GetOrderDetails(long orderId);
     }
     public class OrderService : IOrderService
@@ -44,6 +45,11 @@ namespace WarehouseRemittance.Core.Services
                 .Select(c => c.ToDto())
                 .ToList();
         }
+        //public OrderDto getOrderId(long code)
+        //{
+        //    return (OrderDto)_context.Orders
+        //        .Select(c => c.ToDtoId());
+        //}
         public long AddDetail(OrderDetailDto dto)
         {
             OrderDetail orderDetail = new OrderDetail
@@ -117,6 +123,7 @@ namespace WarehouseRemittance.Core.Services
             {
                 foreach (var item in dto.OrderDetails)
                 {
+                    // It must be add to database not update 
                     _context.OrderDetails.Add(new OrderDetail
                     {
                         OrderId = order.Id,
@@ -130,10 +137,19 @@ namespace WarehouseRemittance.Core.Services
         }
         public void Delete(long orderId)
         {
+            //Where remove order, it must be soft deleted
             var order = _context.Orders.Find(orderId);
-            order.IsDelete = true;
+            _context.Remove(order);
+            //order.IsDelete = true;
             _context.SaveChanges();
         }
+        // DeleteProduct is not a good name, it must be DeleteOrderDetail
+        public void DeleteProduct(long orderDetailId)
+        {
+            var order = _context.OrderDetails.Find(orderDetailId);
+            _context.RemoveRange(order);
+            //_context.SaveChanges();
+        } 
         public OrderDto Find(long orderId)
         {
             var order = _context.Orders

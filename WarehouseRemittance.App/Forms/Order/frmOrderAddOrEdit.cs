@@ -4,6 +4,7 @@ using WarehouseRemittance.Core.Dtos.RemittanceOrder;
 using Microsoft.Extensions.DependencyInjection;
 using WarehouseRemittance.Core.Services;
 using System.Collections.Generic;
+using WarehouseRemittance.App.Services;
 
 namespace WarehouseRemittance.App.Forms.Order
 {
@@ -50,12 +51,37 @@ namespace WarehouseRemittance.App.Forms.Order
             }
 
         }
-
-        private void btnNewItem_Click(object sender, EventArgs e)
+        private void DeleteProduct_Click(object sender, EventArgs e)
         {
-            var frm = Program.ServiceProvider.GetService<frmAddItemOrder>();
-            frm.ShowDialog();
+            long Id = Convert.ToInt64(dgListProducts.SelectedRows[0].Cells[1].Value);
+            if (OrderId == 0)
+            {
+                DeleteListProduct((int)DataGridViewElementStates.Selected);
+                LoadGrid();
+            }
+            else
+            {
+                if (Id > 0)
+                {
+                    _orderService.DeleteProduct(Id);
+                   // LoadGrid();
+                }
+                else
+                {  
+                        Int32 selectedRowCount = dgListProducts.Rows.GetRowCount(DataGridViewElementStates.Selected);
+                        if (selectedRowCount > 0)
+                        {
+                            for (int i = 0; i < selectedRowCount; i++)
+                            {
+                                DeleteListProduct((int)DataGridViewElementStates.Selected);
+                            }
+                        }
+                        
+                    LoadGrid();
+                }
+            }
         }
+
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             _orderDetailDtos.Add(new OrderDetailDto
@@ -85,7 +111,7 @@ namespace WarehouseRemittance.App.Forms.Order
                 OrderDetails = _orderDetailDtos,
             };
             if (OrderId == 0)
-            {                
+            {
                 _orderService.Add(dto);
             }
             else
@@ -111,22 +137,36 @@ namespace WarehouseRemittance.App.Forms.Order
             dgListProducts.AutoGenerateColumns = false;
             _orderDetailDtos = new List<OrderDetailDto>();
 
+
             if (orderId.HasValue)
             {
                 var orderDetails = _orderService.GetOrderDetails(orderId.Value);
                 source.DataSource = orderDetails;
                 dgListProducts.DataSource = source;
                 _orderDetailDtos.AddRange(orderDetails);
+                //  txtOrderCode.Text =Convert.ToString(_orderService.getOrderId(OrderId));
             }
             else
             {
                 source.DataSource = _orderDetailDtos;
                 dgListProducts.DataSource = source;
+                // txtOrderCode.Text = Convert.ToString(_orderService.getOrderId(OrderId));
+            }
+            dgListProducts.MouseDown += GeneralService.DataGridView_MouseDown;
+        }
+        private void DeleteListProduct(int orderId)
+        {
+            Int32 selectedRowCount = dgListProducts.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    dgListProducts.Rows.RemoveAt(dgListProducts.SelectedRows[0].Index);
+                }
             }
         }
 
         #endregion
-
 
     }
 }

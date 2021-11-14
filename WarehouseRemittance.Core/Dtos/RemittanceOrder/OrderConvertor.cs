@@ -42,5 +42,12 @@ namespace WarehouseRemittance.Core.Dtos.RemittanceOrder
                 Product = o.Product?.ToDto()
             };
         }
+        //public static OrderDto ToDtoId (this Order o)
+        //{
+        //    return new OrderDto
+        //    {
+        //        OrderCode = o.OrderCode,
+        //    };
+        //}
     }
 }
