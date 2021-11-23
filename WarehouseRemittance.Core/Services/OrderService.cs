@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WarehouseRemittance.Core.Dtos.Products;
 using WarehouseRemittance.Core.Dtos.RemittanceOrder;
 using WarehouseRemittance.Data.Context;
@@ -14,12 +15,14 @@ namespace WarehouseRemittance.Core.Services
         OrderDto Find(long orderId);
         List<OrderDto> GetAll();
         List<OrderDto> GetAll(long code);
+        Task<List<OrderDto>> GetAllAsync();
         long AddDetail(OrderDetailDto dto);
         long Add(OrderDto dto);
         public void Update(OrderDto dto);
         public void Delete(long orderId);
         public void DeleteProduct(long orderDetailId);
         List<OrderDetailDto> GetOrderDetails(long orderId);
+        
     }
     public class OrderService : IOrderService
     {
@@ -44,6 +47,16 @@ namespace WarehouseRemittance.Core.Services
                 .Include(c => c.User)
                 .Select(c => c.ToDto())
                 .ToList();
+        }
+        public async Task<List<OrderDto>> GetAllAsync()
+        {
+            return await _context.Orders
+                //.Where(c => c.IsDelete == false)
+                .Include(c => c.OrderDetails).ThenInclude(c => c.Product)
+                .Include(c => c.User)
+                .Select(c => c.ToDto())
+                //.IgnoreQueryFilters()
+                .ToListAsync();
         }
         //public OrderDto getOrderId(long code)
         //{
@@ -168,5 +181,7 @@ namespace WarehouseRemittance.Core.Services
                 .Select(c => c.ToDto())
                 .ToList();
         }
+
+        
     }
 }
